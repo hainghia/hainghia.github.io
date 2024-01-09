@@ -25,26 +25,31 @@ mdbook init .
 ```
 
 ### [The build command](https://rust-lang.github.io/mdBook/cli/build.html)
+
 ```shell
 mdbook build
 ```
 
 ### [The watch command](https://rust-lang.github.io/mdBook/cli/watch.html)
+
 ```shell
 mdbook watch
 ```
 
 ### [The serve command](https://rust-lang.github.io/mdBook/cli/serve.html)
+
 ```shell
 mdbook serve --hostname 127.0.0.1 --port 3333 --open
 ```
 
 ### [The test command](https://rust-lang.github.io/mdBook/cli/test.html)
+
 ```shell
 mdbook test
 ```
 
 ### [The clean command](https://rust-lang.github.io/mdBook/cli/clean.html)
+
 ```shell
 mdbook clean
 ```
