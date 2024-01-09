@@ -1,0 +1,24 @@
+#Environment
+.idea
+.vscode
+
+# will have compiled files and executables
+debug/
+book/
+target/
+.env
+env.yaml
+
+# General
+.vagrant/
+
+# Logs
+*.log
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Diagram
+*.$*.drawio.*
