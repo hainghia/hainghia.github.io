@@ -2,9 +2,9 @@
 
 [Introduction](README.md)
 
-# User Guide
+# Python
 
-- [Installation](guide/installation.md)
+- [Installation](language/python/installation.md)
 - [Reading Books](guide/reading.md)
 - [Creating a Book](guide/creating.md)
 
