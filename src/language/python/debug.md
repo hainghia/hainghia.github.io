@@ -1,6 +1,6 @@
 # Debug Idea
 
-## Cài đặt Debug chalice trên `pycharm`
+## Cài đặt Debug Chalice trên `pycharm`
 
 - https://github.com/aws/chalice/issues/548
 - https://github.com/aws/chalice/issues/873
@@ -11,4 +11,8 @@
 3. Trong cửa sổ cấu hình, nhấp vào biểu tượng "+" ở góc trên bên trái và chọn "Python".
    Đặt tên cho cấu hình, ví dụ: "Chalice Debug".
    Trong phần "Script path", điều chỉnh đường dẫn đến file /venv/bin/chalice trong project của bạn.
-   Trong phần "Parameters", điền local --no-autoreload để chỉ định rằng bạn muốn chạy Chalice ở chế độ local.
+   Trong phần "Parameters", điền các thông số như hình
+    ```shell
+    local --no-autoreload --host 0.0.0.0 --port 8000
+    ```
+    ![chalice.png](../../images/chalice.png)
