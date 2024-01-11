@@ -1,18 +1,46 @@
 # Debug Idea
 
-## Cài đặt Debug Chalice trên `pycharm`
+## Flask debugging in PyCharm
+
+![chalice.png](../../images/flask.png)
+
+## Django debugging in PyCharm
+
+![chalice.png](../../images/django.png)
+Django Setting
+![chalice.png](../../images/django_setting.png)
+
+## Chalice debugging in PyCharm
 
 - https://github.com/aws/chalice/issues/548
 - https://github.com/aws/chalice/issues/873
 
-1. Mở PyCharm và mở project Chalice.
-2. Tạo một cấu hình mới cho việc chạy và debug. Nhấp vào menu "Run" trên thanh công cụ, chọn "Edit Configurations...".
-   ![img.png](../../images/img.png)
-3. Trong cửa sổ cấu hình, nhấp vào biểu tượng "+" ở góc trên bên trái và chọn "Python".
-   Đặt tên cho cấu hình, ví dụ: "Chalice Debug".
-   Trong phần "Script path", điều chỉnh đường dẫn đến file /venv/bin/chalice trong project của bạn.
-   Trong phần "Parameters", điền các thông số như hình
-    ```shell
-    local --no-autoreload --host 0.0.0.0 --port 8000
-    ```
-    ![chalice.png](../../images/chalice.png)
+```shell
+local --no-autoreload --host 0.0.0.0 --port 8000
+```
+
+![chalice.png](../../images/chalice.png)
+
+## Celery debugging in PyCharm
+
+```shell
+-A app.celery worker --scheduler redbeat.RedBeatScheduler -E -B -l info
+```
+
+![chalice.png](../../images/celery.png)
+
+## AWS Serverless Application Model (AWS SAM) debugging in PyCharm
+
+![chalice.png](../../images/sam_configuration.png)
+![chalice.png](../../images/sam_cli.png)
+
+> Fix PyCharm Fail on Debug SAM
+> Can't open file /tmp/lambci_debug_files/pydevd.py: [Errno 13] Permission denied
+
+Add path to `Resources » File sharing`
+```shell
+/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev
+```
+![chalice.png](../../images/docker.png)
+
+
