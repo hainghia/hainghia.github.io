@@ -5,8 +5,9 @@
 # Python
 
 - [Installation](language/python/installation.md)
-- [Reading Books](guide/reading.md)
-- [Creating a Book](guide/creating.md)
+- [Reference Guide](language/python/reference-guide.md)
+- [Ticket](language/python/ticket.md)
+- [Debug Idea](language/python/debug.md)
 
 # Reference Guide
 
