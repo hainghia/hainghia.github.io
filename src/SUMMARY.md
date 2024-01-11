@@ -9,7 +9,14 @@
 - [Ticket](language/python/ticket.md)
 - [Debug Idea](language/python/debug.md)
 
-# Reference Guide
+# Rust
+
+- [Installation](language/rust/installation.md)
+- [Reference Guide](language/rust/reference-guide.md)
+    - [Basic Document](language/rust/documentation/basic.md)
+- [Ticket](language/rust/ticket.md)
+- [Framework](language/rust/framework.md)
+- [Debug Idea](language/rust/debug.md)
 
 - [Command Line Tool](cli/README.md)
     - [init](cli/init.md)
