@@ -9,29 +9,25 @@
 
 # Python
 
-- [Installation](language/python/installation.md)
-- [Reference Guide](language/python/reference-guide.md)
-- [Ticket](language/python/ticket.md)
-- [Debug Idea](language/python/debug.md)
+- [Installation Python](language/python/installation.md)
+- [Reference Guide Python](language/python/reference-guide.md)
+- [Ticket Python](language/python/ticket.md)
+- [Debug Idea Python](language/python/debug.md)
 
 # Rust
 
-- [Installation](language/rust/installation.md)
-- [Reference Guide](language/rust/reference-guide.md)
-    - [Basic Document](language/rust/documentation/basic.md)
-- [Ticket](language/rust/ticket.md)
-- [Framework](language/rust/framework.md)
-- [Debug Idea](language/rust/debug.md)
+- [Installation Rust](language/rust/installation.md)
+- [Reference Guide Rust](language/rust/reference-guide.md)
+    - [Basic Document Rust](language/rust/documentation/basic.md)
+- [Ticket Rust](language/rust/ticket.md)
+- [Framework Rust](language/rust/framework.md)
+- [Debug Idea Rust](language/rust/debug.md)
 
 # PostgreSQL
 
-- [Installing PostgreSQL](language/rust/installation.md)
-- [Reference Guide](language/rust/reference-guide.md)
-    - [Basic Document](language/rust/documentation/basic.md)
-- [Ticket](language/rust/ticket.md)
-- [Framework](language/rust/framework.md)
-- [Debug Idea](language/rust/debug.md)
-
+- [Installing PostgreSQL](database/postgresql/installation.md)
+- [Reference Guide PostgreSQL](database/postgresql/reference-guide.md)
+- [Ticket PostgreSQL](database/postgresql/ticket.md)
 
 -----------
 

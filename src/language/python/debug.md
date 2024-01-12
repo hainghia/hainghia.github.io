@@ -2,13 +2,13 @@
 
 ## Flask debugging in PyCharm
 
-![chalice.png](../../images/flask.png)
+![chalice.png](../../images/language/python/flask.png)
 
 ## Django debugging in PyCharm
 
-![chalice.png](../../images/django.png)
+![chalice.png](../../images/language/python/django.png)
 Django Setting
-![chalice.png](../../images/django_setting.png)
+![chalice.png](../../images/language/python/django_setting.png)
 
 ## Chalice debugging in PyCharm
 
@@ -19,7 +19,7 @@ Django Setting
 local --no-autoreload --host 0.0.0.0 --port 8000
 ```
 
-![chalice.png](../../images/chalice.png)
+![chalice.png](../../images/language/python/chalice.png)
 
 ## Celery debugging in PyCharm
 
@@ -27,12 +27,12 @@ local --no-autoreload --host 0.0.0.0 --port 8000
 -A app.celery worker --scheduler redbeat.RedBeatScheduler -E -B -l info
 ```
 
-![chalice.png](../../images/celery.png)
+![chalice.png](../../images/language/python/celery.png)
 
 ## AWS Serverless Application Model (AWS SAM) debugging in PyCharm
 
-![chalice.png](../../images/sam_configuration.png)
-![chalice.png](../../images/sam_cli.png)
+![chalice.png](../../images/language/python/sam_configuration.png)
+![chalice.png](../../images/language/python/sam_cli.png)
 
 > Fix PyCharm Fail on Debug SAM
 > Can't open file /tmp/lambci_debug_files/pydevd.py: [Errno 13] Permission denied
@@ -41,6 +41,6 @@ Add path to `Resources » File sharing`
 ```shell
 /Applications/PyCharm.app/Contents/plugins/python/helpers/pydev
 ```
-![chalice.png](../../images/docker.png)
+![chalice.png](../../images/language/python/docker.png)
 
 
