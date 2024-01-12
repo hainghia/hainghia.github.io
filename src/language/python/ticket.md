@@ -56,9 +56,38 @@ def list_routes():
 ```
 
 `app.py`
+
 ```python
 list_routes()
 ```
 
-    
-    
+### Celery Tasks run multiple times
+
+> Celery tự động tái tạo lại task chưa được chạy
+
+`Visibility timeout` Nếu một `task` không được `acknowledged` trong thời gian chờ hiển thị (`Visibility timeout`) thì task đó sẽ được phân phối lại `redelivered` cho một worker và được thực thi.
+Điều này gây ra sự cố với các tác vụ `ETA/countdown/retry tasks` trong đó thời gian thực thi vượt quá thời gian chờ hiển thị, nó sẽ được thực thi lại và lặp lại trong một vòng lặp.
+Để khắc phục có thể tăng `Visibility timeout` để phù hợp với thời gian của `ETA/countdown/retry tasks` dài nhất.
+**Tuy nhiên, điều này không được khuyến khích vì `Visibility timeout` lâu sẽ chỉ trì hoãn việc gửi lại các task 'BỊ MẤT' trong trường hợp failure hoặc terminated workers.**
+Broker không phải là database, vì vậy nếu bạn cần lập lịch các tác vụ trong tương lai xa hơn, tác vụ định kỳ dựa trên database-backed có thể là lựa chọn tốt hơn. Các tác vụ định kỳ sẽ không bị ảnh hưởng bởi `visibility timeout` vì đây là một khái niệm tách biệt với `ETA/countdown/retry tasks`
+
+- [Celery documentation Visibility Timeout](https://docs.celeryq.dev/en/stable/getting-started/backends-and-brokers/redis.html#visibility-timeout)
+
+The default visibility timeout for Redis is 1 hour.
+
+```python
+app.conf.broker_transport_options = {'visibility_timeout': 3600}  # 1 hour.
+```
+
+> Flower is an open-source web application for monitoring and managing Celery clusters.
+- [Flower](https://flower.readthedocs.io/en/latest/install.html)
+- [Tasks run multiple times groups.google.com](https://groups.google.com/g/celery-users/c/W0Qf09ahjas?pli=1)
+
+Flower sẽ `monitoring` and `managing` Celery do đó nó sẽ giúp tái tạo những task bị mất của Celery. Điều này vô tình khiến cho một task chưa hoàn tất nhưng hết `Visibility timeout` sẽ được tái tạo lại.
+Và đó là nguyên nhân chính gây ra lỗi một task được lên lịch và chạy nhiều lần.
+
+```
+[2024-01-12 10:47:37,888: INFO/MainProcess] Task worker.offer.delay_update_offer_end_date[c524b552-e6e7-44ea-ba1e-fa71c187f2f2] received
+[2024-01-12 10:48:29,443: INFO/MainProcess] Task worker.offer.delay_update_offer_end_date[c524b552-e6e7-44ea-ba1e-fa71c187f2f2] received
+[2024-01-12 10:50:09,347: INFO/MainProcess] Task worker.offer.delay_update_offer_end_date[c524b552-e6e7-44ea-ba1e-fa71c187f2f2] received
+```
