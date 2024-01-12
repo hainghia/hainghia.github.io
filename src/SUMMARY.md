@@ -2,6 +2,11 @@
 
 [Introduction](README.md)
 
+# Command Line System
+
+- [Macbook](command/linux/terminal.md)
+- [Windonws](command/windows/power_shell.md)
+
 # Python
 
 - [Installation](language/python/installation.md)
