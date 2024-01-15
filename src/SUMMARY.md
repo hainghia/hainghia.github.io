@@ -29,6 +29,8 @@
 - [Reference Guide PostgreSQL](database/postgresql/reference-guide.md)
 - [Ticket PostgreSQL](database/postgresql/ticket.md)
 
+# Javascript
+- [File JS](language/javascript/test.md)
 -----------
 
 [Contributors](misc/contributors.md)
