@@ -29,8 +29,16 @@
 - [Reference Guide PostgreSQL](database/postgresql/reference-guide.md)
 - [Ticket PostgreSQL](database/postgresql/ticket.md)
 
+# Redshift
+
+- [Installing Redhist](database/redshift/installation.md)
+- [Reference Guide Redhist](database/redshift/reference-guide.md)
+- [Ticket Redhist](database/redshift/ticket.md)
+
 # Javascript
+
 - [File JS](language/javascript/test.md)
+
 -----------
 
 [Contributors](misc/contributors.md)
