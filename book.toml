@@ -1,7 +1,7 @@
 [book]
-title = "Example book"
+title = "Hai Nghia's blog"
 authors = ["Hai Nghia"]
-description = "The example book covers examples."
+description = "Hai Nghia's blog"
 language = "en"
 multilingual = true
 src = "src"
