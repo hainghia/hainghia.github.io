@@ -10,4 +10,4 @@ results for the tasks at hand.
 I am eager to contribute to the growth of your organization and apply my knowledge and expertise to achieve common
 goals.
 Thank you sincerely for considering this introduction.
-<p><img src="./images/logo.svg" alt="Hai Nghia" /></p>
+<p><img src="/images/logo.svg" alt="Hai Nghia" /></p>
