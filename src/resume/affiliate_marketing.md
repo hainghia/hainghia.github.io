@@ -1,4 +1,11 @@
-# Affiliate marketing
+<div style="display: flex; justify-content: space-between; align-items: center; align-content: flex-end">
+<h1 style="text-align:left">
+Affiliate marketing
+</h1>
+<div style=" display: flex; flex-direction: column; justify-content: center; align-items: flex-end; align-content: center;">
+    <p><img src="images/affiliate-marketing.png" width="50" alt="The Rust Logo" /></p>
+</div>
+</div>
 
 > #### PERMATE GLOBAL JOINT STOCK COMPANY
 > *Lot 05 – 06 Area 2 Nguyen Sinh Sac, Hoa Minh, Lien Chieu, Da Nang, Viet Nam*
