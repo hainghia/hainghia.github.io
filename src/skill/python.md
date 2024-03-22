@@ -3,7 +3,7 @@
 Python
 </h1>
 <div style=" display: flex; flex-direction: column; justify-content: center; align-items: flex-end; align-content: center;">
-    <p><img src="images/python.svg" width="75" alt="The Rust Logo" /></p>
+    <p><img src="images/python.svg" width="75" alt="The Logo" /></p>
 </div>
 </div>
 

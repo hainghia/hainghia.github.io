@@ -14,3 +14,6 @@
 # Skills
 - [Python](skill/python.md)
 - [PHP](skill/php.md)
+- [Docker](skill/docker.md)
+- [Data Engineer](skill/data_engineer.md)
+- [Microservice](skill/microservice.md)
