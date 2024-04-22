@@ -1,6 +1,21 @@
 [book]
+title = "Hai Nghia's Resume"
 authors = ["Hai Nghia"]
+description = "Hai Nghia's Resume"
 language = "en"
-multilingual = false
+multilingual = true
 src = "src"
-title = "tieu-de"
+
+[rust]
+edition = "2021"
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+curly-quotes = true
+mathjax-support = false
+copy-fonts = true
+no-section-label = false
+git-repository-url = "https://www.linkedin.com/in/hainghia/"
+git-repository-icon = "fa-linkedin"
+input-404 = "404.md"

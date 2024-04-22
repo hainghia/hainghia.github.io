@@ -4,6 +4,7 @@
 
 # will have compiled files and executables
 debug/
+tmp/
 book/
 target/
 .env
@@ -22,3 +23,20 @@ env.yaml
 
 # Diagram
 *.$*.drawio.*
+
+## Python
+__pycache__/
+__pypackages__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
