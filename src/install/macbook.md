@@ -315,3 +315,22 @@ brew install --cask another-redis-desktop-manager
 ```shell
 sudo xattr -rd com.apple.quarantine /Applications/Another\ Redis\ Desktop\ Manager.app
 ```
+
+## [NodeJS](https://nodejs.org)
+- [NVM Github](https://github.com/nvm-sh/nvm)
+- [nodejs package manager nvm](https://nodejs.org/en/download/package-manager/all#nvm)
+- [brew nvm](https://formulae.brew.sh/formula/nvm)
+
+```shell
+# Install
+brew install nvm
+```
+
+### Use
+```shell
+# Install node available version
+nvm install 20
+
+# Use the latest available 20.0.x release
+nvm use 20
+```
