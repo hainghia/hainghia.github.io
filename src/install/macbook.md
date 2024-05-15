@@ -334,3 +334,15 @@ nvm install 20
 # Use the latest available 20.0.x release
 nvm use 20
 ```
+
+### [Installation Yarn](https://yarnpkg.com/getting-started/install)
+*Quản lý Yarn là theo dự án và thông qua `Corepack` , được cài đặt theo mặc định cùng với Node.js.*
+```shell
+sudo corepack enable
+```
+
+### [Updating Yarn](https://yarnpkg.com/cli/set/version)
+```shell
+yarn set version stable
+yarn set version classic
+```
