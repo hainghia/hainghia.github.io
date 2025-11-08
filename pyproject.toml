@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "Docker"
+version = "0.1.0"
+description = "Docker"
+authors = ["hainghia <hohainghia19@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+marshmallow = "^3.22"
+faker = "^29.0"
+pandas = "^2.2"
+numpy = "^2.1"
+python-dotenv = "^1.0"
+requests = "^2.32"
+redis = "^5.0"
+boto3 = "^1.35"
+psycopg2-binary = "^2.9"
+Jinja2 = "^3.1"
+jsonpickle = "^3.3"
+sqlalchemy = "^2.0"
+pymysql = "^1.1"
+diagrams = "^0.23"
+botocore = "^1.35"
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "^poetry.core.masonry.api"

@@ -315,3 +315,34 @@ brew install --cask another-redis-desktop-manager
 ```shell
 sudo xattr -rd com.apple.quarantine /Applications/Another\ Redis\ Desktop\ Manager.app
 ```
+
+## [NodeJS](https://nodejs.org)
+- [NVM Github](https://github.com/nvm-sh/nvm)
+- [nodejs package manager nvm](https://nodejs.org/en/download/package-manager/all#nvm)
+- [brew nvm](https://formulae.brew.sh/formula/nvm)
+
+```shell
+# Install
+brew install nvm
+```
+
+### Use
+```shell
+# Install node available version
+nvm install 20
+
+# Use the latest available 20.0.x release
+nvm use 20
+```
+
+### [Installation Yarn](https://yarnpkg.com/getting-started/install)
+*Quản lý Yarn là theo dự án và thông qua `Corepack` , được cài đặt theo mặc định cùng với Node.js.*
+```shell
+sudo corepack enable
+```
+
+### [Updating Yarn](https://yarnpkg.com/cli/set/version)
+```shell
+yarn set version stable
+yarn set version classic
+```

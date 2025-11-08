@@ -1,6 +1,7 @@
 ## Home Page
 
 - https://hainghia.github.io/
+https://rust-lang.github.io/mdBook/format/configuration/renderers.html
 
 ## [mdBook is a command line tool to create books with Markdown](https://rust-lang.github.io/mdBook)
 

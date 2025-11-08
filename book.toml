@@ -1,18 +1,19 @@
 [book]
-title = "Hai Nghia's Resume"
+title = "Hai Nghia's Blog"
 authors = ["Hai Nghia"]
-description = "Hai Nghia's Resume"
+description = "Hai Nghia's Blog"
 language = "en"
 multilingual = true
 src = "src"
 
+# https://rust-lang.github.io/rustfmt
 [rust]
 edition = "2021"
 
 [output.html]
 default-theme = "navy"
 preferred-dark-theme = "navy"
-curly-quotes = true
+smart-punctuation = true
 mathjax-support = false
 copy-fonts = true
 no-section-label = false
