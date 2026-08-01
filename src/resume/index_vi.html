@@ -5,12 +5,28 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    @media print {
+      body { background: #fff !important; }
+      .no-print { display: none !important; }
+      table { page-break-inside: avoid; }
+      div { page-break-inside: auto; }
+      h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
+      img { page-break-inside: avoid; }
+      main { width: 100% !important; margin: 0 !important; }
+      .container { box-shadow: none !important; margin: 0 !important; padding: 0 !important; }
+      @page { margin: 10mm; }
+    }
+  </style>
 </head>
 <body style="width: 100%;background: #565656">
 <main style="width: 780px; margin: 0 auto">
-  <div style="text-align: right; padding: 5px 10px;">
-    <a href="index.html" style="text-decoration: none; color: #ccc; padding: 5px;">EN</a> |
-    <a href="index_vi.html" style="text-decoration: none; color: #fff; font-weight: bold; padding: 5px;">VI</a>
+    <div class="no-print" style="text-align: right; padding: 5px 10px; display: flex; justify-content: flex-end; align-items: center; gap: 10px;">
+    <button onclick="window.print()" style="background: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Print / PDF</button>
+    <div>
+      <a href="index.html" style="text-decoration: none; color: #ccc; padding: 5px;">EN</a> |
+      <a href="index_vi.html" style="text-decoration: none; color: #fff; font-weight: bold; padding: 5px;">VI</a>
+    </div>
   </div>
   <div class="container" style="width: 100%; background: #fff; display: grid; padding: 0 10px; margin: auto; font-family: 'Roboto', sans-serif; color: black !important;box-sizing: border-box;">
     <div class="row" style="display: flex;flex-wrap: wrap;margin-right: -10px; margin-left: -10px;box-sizing: border-box;">
