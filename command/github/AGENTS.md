@@ -2,7 +2,7 @@
 
 > **Vai trò:** _(chưa mô tả — điền tay/AI; vùng này sync-safe)_
 
-<!-- TREE:AUTO:BEGIN — auto-sinh bởi `just tree`; KHÔNG sửa trong block -->
+<!-- TREE:AUTO:BEGIN -->
 - **Loại:** Just automation
 - **Recipe (2):** `git-config` · `git-commit-push`
 - **Thư mục con:** —

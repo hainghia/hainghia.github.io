@@ -2,7 +2,7 @@
 
 > **Vai trò:** _(chưa mô tả — điền tay/AI; vùng này sync-safe)_
 
-<!-- TREE:AUTO:BEGIN — auto-sinh bởi `just tree`; KHÔNG sửa trong block -->
+<!-- TREE:AUTO:BEGIN -->
 - **Loại:** Just automation
 - **Thư mục con:** common, github, mdbook
 - **File:** .DS_Store, __init__.just
