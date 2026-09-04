@@ -5,6 +5,6 @@
 <!-- TREE:AUTO:BEGIN -->
 - **Loại:** Just automation
 - **Thư mục con:** common, github, mdbook
-- **File:** .DS_Store, __init__.just
+- **File:** __init__.just
 - **Bối cảnh:** [`projects/hainghia.github.io/AGENTS.md`](../AGENTS.md)
 <!-- TREE:AUTO:END -->

@@ -5,6 +5,6 @@
 <!-- TREE:AUTO:BEGIN -->
 - **Loại:** Python module
 - **Thư mục con:** command, src, tests
-- **File:** .DS_Store, .editorconfig, .env, .env.example, .gitignore, LICENSE, README.md, book.toml, justfile, logo.png, pyproject.toml, uv.lock
+- **File:** .editorconfig, .env.example, .git, .gitignore, LICENSE, README.md, book.toml, justfile, logo.png, pyproject.toml, uv.lock
 - **Bối cảnh:** [`projects/AGENTS.md`](../AGENTS.md)
 <!-- TREE:AUTO:END -->
