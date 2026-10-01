@@ -3,7 +3,6 @@ title = "Hai Nghia's Blog"
 authors = ["Hai Nghia"]
 description = "Hai Nghia's Blog"
 language = "en"
-multilingual = true
 src = "src"
 
 # https://rust-lang.github.io/rustfmt
@@ -15,8 +14,6 @@ default-theme = "navy"
 preferred-dark-theme = "navy"
 smart-punctuation = true
 mathjax-support = false
-copy-fonts = true
 no-section-label = false
 git-repository-url = "https://www.linkedin.com/in/hainghia/"
-git-repository-icon = "fa-linkedin"
 input-404 = "404.md"
