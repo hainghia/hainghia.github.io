@@ -1232,6 +1232,175 @@
             </div>
 
           </div>
+          <hr style="page-break-after: always;"></hr>
+          <h2 style="padding: 15px 0 5px 0; margin: 0">ĐÀO TẠO & LAB THỰC HÀNH</h2>
+          <!-- Đào tạo và lab .NET & Azure -->
+          <div style="display: flex; flex-direction: column; text-align: start">
+            <h3 style="margin: 0; padding: 10px 0">.NET & Azure <span style="font-weight: 400;"> - Đào tạo nội bộ Kaopiz và lab tự học</span></h3>
+            <p style="font-style: italic; margin: 0; padding: 5px 0">Tháng 9/2026 - Hiện tại</p>
+            <!--Lab Azure Functions -->
+            <div>
+              <table style="width: 100%">
+                <thead>
+                <tr>
+                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Lab tích hợp Azure Functions .NET 8 (ERP × hóa đơn điện tử)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Thời gian</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Tháng 10/2026 - Hiện tại</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Quy mô</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">1 thành viên (tự học)</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Vị trí</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">PoC tự học (không phải dự án khách hàng)</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Mô tả</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Lab thực hành tích hợp ERP (Dynamics 365 Finance and Operations) với nhà cung cấp hóa đơn điện tử qua Azure Functions .NET 8: nhận webhook, xử lý qua hàng đợi, OAuth 2.0 client, upload file hóa đơn và polling dự phòng; toàn bộ chạy với provider giả lập, bộ gửi webhook giả lập và endpoint D365 giả lập.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Trách nhiệm</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Azure Functions:</span> Xây Function App isolated worker gồm endpoint webhook HTTP, trigger Service Bus theo session có settlement thủ công và dead-letter, cùng trigger Timer cho polling dự phòng.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Nhận webhook:</span> Xác thực HMAC-SHA256 hoặc API key trên raw body bằng so sánh constant-time, chỉ trả 200 sau khi đã đưa event vào hàng đợi; xử lý idempotent, phát hiện event trùng và sai thứ tự theo version.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">OAuth 2.0 client:</span> Authorization Code với PKCE và refresh token rotation; refresh single-flight để nhiều caller đồng thời chỉ gây một lần refresh token.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Tích hợp REST:</span> Typed HttpClient upload multipart file hóa đơn kèm hash SHA-256; retry bằng Polly (exponential backoff, jitter, Retry-After) cho 429/5xx, không retry lỗi 4xx.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Client D365 F&O:</span> Gọi OData và custom service bằng Microsoft Entra ID app credential hoặc Managed Identity, chỉ chấp nhận kết quả nghiệp vụ đã biết.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Hạ tầng Azure:</span> Viết Bicep cho Function App Flex Consumption, user-assigned Managed Identity, Key Vault reference, Service Bus queue có session, Application Insights, cảnh báo DLQ và lỗi, VNet integration và IP restriction; pipeline Azure DevOps có các stage build, test, đóng gói và deploy.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Kiểm chứng:</span> 36 unit/protocol test và 4 HTTP flow test pass với provider và bộ gửi webhook giả lập; Functions publish và Bicep lint đạt; chưa deploy lên Azure tenant thật.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Công nghệ</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> C# (.NET 8), Azure Functions isolated worker, ASP.NET Core</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Azure:</span> Service Bus, Key Vault, Managed Identity, Microsoft Entra ID, Application Insights, OpenTelemetry</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Thư viện:</span> Polly, Azure.Identity, Azure.Messaging.ServiceBus</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Kiểm thử:</span> xUnit, ASP.NET Core TestServer</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">IaC & CI/CD:</span> Bicep, Azure DevOps Pipelines</li>
+                    </ul>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--Đào tạo Clean Architecture -->
+            <div>
+              <table style="width: 100%">
+                <thead>
+                <tr>
+                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Equipment Rental: Modular Monolith theo Clean Architecture (.NET 10)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Thời gian</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Tháng 9/2026 - Hiện tại</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Quy mô</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">1 thành viên</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Vị trí</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Đào tạo nội bộ</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Mô tả</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Dựng lại hệ thống cho thuê thiết bị theo Clean Architecture dạng modular monolith với hai deployable: host Web (giao diện Blazor Server và JSON API) và host Worker cho job nền, messaging và gửi email.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Trách nhiệm</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Kiến trúc module:</span> Chia hệ thống thành 3 module (Equipment Management, Rentals, Users), mỗi module gồm các project Domain, Application, Contracts, Infrastructure, Presentation; dùng chung các building block cho hosting, messaging, outbox và mailing.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Ranh giới và build:</span> Giữ ranh giới layer và module bằng architecture test (NetArchTest), TreatWarningsAsErrors, tắt transitive project reference và dùng Central Package Management.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Dữ liệu:</span> EF Core với PostgreSQL, mỗi module một DbContext và bộ migration riêng; invariant domain cho vòng đời hợp đồng thuê (activate, complete, cancel).</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Tích hợp hướng sự kiện:</span> Ghi outbox cùng giao dịch với dữ liệu nghiệp vụ, worker phát sang Kafka (Redpanda) và SMTP, email xác nhận idempotent; Kafka consumer đồng bộ danh mục thiết bị của module Rentals.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Vận hành:</span> OpenTelemetry (trace, metric, log qua OTLP, Aspire Dashboard), health check, xác thực cookie có giới hạn tần suất.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Kiểm thử:</span> Architecture test, unit test và integration test với xUnit, Moq, NSubstitute, WebApplicationFactory và Testcontainers (PostgreSQL).</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Công nghệ</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> C# (.NET 10), ASP.NET Core, Blazor Server, Entity Framework Core</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Messaging:</span> Kafka (Redpanda, Confluent.Kafka), Transactional Outbox, MailKit (Mailpit)</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Cơ sở dữ liệu:</span> PostgreSQL 18</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Quan sát hệ thống:</span> OpenTelemetry, Aspire Dashboard, Health Checks</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Kiểm thử:</span> xUnit, Moq, NSubstitute, Testcontainers, NetArchTest</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Hạ tầng:</span> Docker Compose</li>
+                    </ul>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--Đào tạo WinForms sang Blazor -->
+            <div>
+              <table style="width: 100%">
+                <thead>
+                <tr>
+                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Đào tạo migration .NET: VB.NET WinForms → Blazor (Equipment Rental)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Thời gian</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Tháng 9/2026 - Hiện tại</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Quy mô</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">1 thành viên</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Vị trí</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Đào tạo nội bộ (khoảng 80 giờ, đã xong phase 0–6)</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Mô tả</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Chương trình đào tạo migration .NET của Kaopiz trên hệ thống cho thuê thiết bị: học C# và ASP.NET Core, dựng lại ứng dụng VB.NET WinForms thành web app Blazor, chuyển dữ liệu Oracle cũ sang PostgreSQL và migrate trọn vẹn một màn hình WinForms.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Trách nhiệm</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Nền tảng C#:</span> OOP, LINQ, async/await, nullable reference types; domain model có xUnit test (coverage các class domain từ 80% trở lên).</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">ASP.NET Core:</span> HTTP pipeline, middleware, dependency injection; CRUD bằng Razor Pages có validation phía server; Web API có tài liệu OpenAPI và Scalar.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Blazor:</span> Component Interactive Server, data binding, routing, form và validation, CSS isolation, JS interop, state với Fluxor; màn hình CRUD hoàn chỉnh bằng Radzen.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">EF Core:</span> Scaffold DbContext, migration, sửa truy vấn N+1 bằng Include và projection, transaction và unit of work; chuyển 8 bảng Oracle cũ sang PostgreSQL bằng data migrator.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Kiểm thử:</span> Unit test có mock và integration test với Testcontainers: 19/19 pass trên bộ dữ liệu 2.000 thiết bị và 10.000 hợp đồng; viết test plan cho module migration.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Migrate hệ thống cũ (capstone):</span> Đọc hiểu và debug ứng dụng VB.NET WinForms, lập bảng mapping control WinForms sang Blazor/Radzen và migrate trọn vẹn màn hình thiết bị (FrmEquipment) sang Blazor.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Microsoft Learn:</span> Hoàn thành các learning path Build .NET applications with C#, Understand ASP.NET Core fundamentals và Build web apps with ASP.NET Core for beginners.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Công nghệ</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Ngôn ngữ:</span> C# (.NET 10), VB.NET</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Web:</span> ASP.NET Core (Razor Pages, Web API, OpenAPI/Scalar), Blazor Interactive Server, Radzen, Fluxor</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Dữ liệu:</span> Entity Framework Core (Npgsql, Oracle), PostgreSQL 18, Oracle Database 23ai Free</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Kiểm thử:</span> xUnit, Moq, Testcontainers</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Công cụ:</span> Docker, JetBrains Rider</li>
+                    </ul>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

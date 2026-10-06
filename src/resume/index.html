@@ -1232,6 +1232,175 @@
             </div>
 
           </div>
+          <hr style="page-break-after: always;"></hr>
+          <h2 style="padding: 15px 0 5px 0; margin: 0">TRAINING & HANDS-ON LABS</h2>
+          <!-- .NET & Azure training and labs -->
+          <div style="display: flex; flex-direction: column; text-align: start">
+            <h3 style="margin: 0; padding: 10px 0">.NET & Azure <span style="font-weight: 400;"> - Kaopiz internal training and self-study labs</span></h3>
+            <p style="font-style: italic; margin: 0; padding: 5px 0">September 2026 - Present</p>
+            <!--Lab Azure Functions -->
+            <div>
+              <table style="width: 100%">
+                <thead>
+                <tr>
+                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">.NET 8 Azure Functions Integration Lab (ERP × e-invoicing)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">October 2026 - Present</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">1 member (self-study)</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Position</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Self-study PoC (not a client project)</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Description</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">A hands-on lab integrating an ERP (Dynamics 365 Finance and Operations) with an e-invoicing provider through .NET 8 Azure Functions: webhook ingestion, queue-based processing, an OAuth 2.0 client, invoice file upload and a polling fallback, all exercised against a mock provider, a mock webhook sender and a mock D365 endpoint.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Responsibilities</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Azure Functions:</span> Built an isolated-worker Function App with an HTTP webhook endpoint, a Service Bus session trigger with manual settlement and dead-lettering, and a Timer trigger for polling fallback.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Webhook Ingestion:</span> Verified HMAC-SHA256 or API key on the raw body with constant-time comparison, acknowledged only after the event was enqueued, and made processing idempotent so duplicate and out-of-order events are detected by version.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">OAuth 2.0 Client:</span> Implemented Authorization Code with PKCE and refresh-token rotation, with a single-flight refresh so concurrent callers trigger only one token refresh.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">REST Integration:</span> Built typed HttpClients for multipart invoice upload with a SHA-256 hash, and Polly retries (exponential backoff, jitter, Retry-After) for 429/5xx without retrying 4xx errors.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">D365 F&O Client:</span> Called OData and custom services with a Microsoft Entra ID app credential or Managed Identity, accepting only known business outcomes.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Azure Infrastructure:</span> Wrote Bicep for a Flex Consumption Function App, user-assigned Managed Identity, Key Vault references, a Service Bus queue with sessions, Application Insights, DLQ and error alerts, VNet integration and IP restrictions, plus an Azure DevOps pipeline with build, test, package and deploy stages.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Verification:</span> 36 unit/protocol tests and 4 HTTP flow tests pass against the mock provider and mock webhook sender; Functions publish and Bicep lint verified; not yet deployed to a live Azure tenant.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Techniques</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> C# (.NET 8), Azure Functions isolated worker, ASP.NET Core</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Azure:</span> Service Bus, Key Vault, Managed Identity, Microsoft Entra ID, Application Insights, OpenTelemetry</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Libraries:</span> Polly, Azure.Identity, Azure.Messaging.ServiceBus</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Testing:</span> xUnit, ASP.NET Core TestServer</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">IaC & CI/CD:</span> Bicep, Azure DevOps Pipelines</li>
+                    </ul>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--Training Clean Architecture -->
+            <div>
+              <table style="width: 100%">
+                <thead>
+                <tr>
+                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Equipment Rental: Clean Architecture Modular Monolith (.NET 10)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">September 2026 - Present</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">1 member</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Position</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Internal training</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Description</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Rebuilt an equipment rental system as a Clean Architecture modular monolith with two deployables: a Web host (Blazor Server UI and JSON API) and a Worker host for background jobs, messaging and email.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Responsibilities</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Modular Architecture:</span> Split the system into three modules (Equipment Management, Rentals, Users), each with Domain, Application, Contracts, Infrastructure and Presentation projects, plus shared building blocks for hosting, messaging, outbox and mailing.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Boundaries & Build Hygiene:</span> Enforced layer and module dependencies with architecture tests (NetArchTest), TreatWarningsAsErrors, disabled transitive project references and Central Package Management.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Data:</span> Used EF Core with PostgreSQL, one DbContext and migration set per module, and domain invariants for the rental lifecycle (activate, complete, cancel).</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Event-Driven Integration:</span> Wrote outbox messages in the same transaction as business data and dispatched them from the worker to Kafka (Redpanda) and SMTP with idempotent confirmation emails; a Kafka consumer keeps the Rentals equipment directory in sync.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Operations:</span> Added OpenTelemetry traces, metrics and logs over OTLP (Aspire Dashboard), health checks, and cookie authentication with rate limiting.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Testing:</span> Wrote architecture, unit and integration tests with xUnit, Moq, NSubstitute, WebApplicationFactory and Testcontainers (PostgreSQL).</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Techniques</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> C# (.NET 10), ASP.NET Core, Blazor Server, Entity Framework Core</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Messaging:</span> Kafka (Redpanda, Confluent.Kafka), Transactional Outbox, MailKit (Mailpit)</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Database:</span> PostgreSQL 18</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Observability:</span> OpenTelemetry, Aspire Dashboard, Health Checks</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Testing:</span> xUnit, Moq, NSubstitute, Testcontainers, NetArchTest</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure:</span> Docker Compose</li>
+                    </ul>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--Training WinForms to Blazor -->
+            <div>
+              <table style="width: 100%">
+                <thead>
+                <tr>
+                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">.NET Migration Training: VB.NET WinForms → Blazor (Equipment Rental)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">September 2026 - Present</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">1 member</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Position</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Internal training (about 80 hours, phases 0–6 completed)</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Description</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Kaopiz .NET migration program on an equipment rental system: learned C# and ASP.NET Core, rebuilt a VB.NET WinForms application as a Blazor web app, migrated legacy Oracle data to PostgreSQL and migrated a WinForms screen end to end.</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Responsibilities</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">C# Fundamentals:</span> OOP, LINQ, async/await and nullable reference types; domain model covered by xUnit tests (at least 80% coverage on domain classes).</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">ASP.NET Core:</span> HTTP pipeline, middleware and dependency injection; Razor Pages CRUD with server-side validation; Web API documented with OpenAPI and Scalar.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Blazor:</span> Interactive Server components, data binding, routing, forms and validation, CSS isolation, JS interop and Fluxor state; a complete CRUD screen with Radzen.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">EF Core:</span> Scaffolded DbContext, migrations, an N+1 query fix with Include and projection, transactions and unit of work; migrated 8 legacy Oracle tables to PostgreSQL with a data migrator.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Testing:</span> Unit tests with mocks and integration tests with Testcontainers: 19/19 pass on a dataset of 2,000 equipment items and 10,000 contracts; wrote the test plan for the migration module.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Legacy Migration (capstone):</span> Read and debugged a VB.NET WinForms app, mapped WinForms controls to Blazor/Radzen components and migrated the equipment screen (FrmEquipment) to Blazor end to end.</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Microsoft Learn:</span> Completed the learning paths Build .NET applications with C#, Understand ASP.NET Core fundamentals, and Build web apps with ASP.NET Core for beginners.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Techniques</td>
+                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
+                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
+                      <li><span style="font-weight: bold; margin-right: 1px;">Languages:</span> C# (.NET 10), VB.NET</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Web:</span> ASP.NET Core (Razor Pages, Web API, OpenAPI/Scalar), Blazor Interactive Server, Radzen, Fluxor</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Data:</span> Entity Framework Core (Npgsql, Oracle), PostgreSQL 18, Oracle Database 23ai Free</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Testing:</span> xUnit, Moq, Testcontainers</li>
+                      <li><span style="font-weight: bold; margin-right: 1px;">Tools:</span> Docker, JetBrains Rider</li>
+                    </ul>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
