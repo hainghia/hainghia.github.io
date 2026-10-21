@@ -14,7 +14,8 @@
 
 <!-- TREE:AUTO:BEGIN -->
 - **Loại:** Just automation
+- **Recipe (1):** `resume-pdf` — Xuất CV EN PDF
 - **Thư mục con:** common, github, mdbook
-- **File:** .DS_Store, `__init__.just`
+- **File:** export_resume.py
 - **Bối cảnh:** [`projects/hainghia.github.io/AGENTS.md`](../AGENTS.md)
 <!-- TREE:AUTO:END -->
