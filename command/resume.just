@@ -4,6 +4,9 @@
 resume-pdf output="exports/resume/hainghia-cv-en.pdf":
     #!/usr/bin/env zsh
     set -euo pipefail
+    if [[ -d "/opt/homebrew/lib" ]]; then
+        export DYLD_FALLBACK_LIBRARY_PATH="/opt/homebrew/lib:${DYLD_FALLBACK_LIBRARY_PATH:-}"
+    fi
     uv run --no-project --with weasyprint==68.0 python command/export_resume.py "$1"
     echo "Đã xuất CV EN: ${1:A}"
 
