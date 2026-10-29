@@ -53,11 +53,12 @@ def main() -> None:
                 }
                 @page {
                     size: A4;
-                    margin: 12mm 10mm;
+                    margin: 10mm 10mm;
                 }
                 body {
-                    font-size: 9.5pt;
+                    font-size: 9pt;
                     background: #ffffff !important;
+                    color: #000000 !important;
                 }
                 .no-print {
                     display: none !important;
@@ -70,19 +71,97 @@ def main() -> None:
                     box-shadow: none !important;
                     border: none !important;
                 }
+                .header-inner {
+                    display: flex !important;
+                    flex-direction: row !important;
+                    align-items: center !important;
+                    text-align: left !important;
+                    gap: 16px !important;
+                }
+                .candidate-avatar {
+                    width: 68px !important;
+                    height: 68px !important;
+                    margin: 0 !important;
+                    box-shadow: none !important;
+                    border: 1px solid #d4d4d8 !important;
+                }
+                .resume-header {
+                    margin-bottom: 8px !important;
+                    padding-bottom: 6px !important;
+                }
+                .candidate-name {
+                    font-size: 18pt !important;
+                    margin-bottom: 2px !important;
+                    line-height: 1.1 !important;
+                }
+                .candidate-title {
+                    font-size: 9.5pt !important;
+                    margin-bottom: 4px !important;
+                    color: #3f3f46 !important;
+                }
+                .contact-bar {
+                    font-size: 8pt !important;
+                    gap: 4px 10px !important;
+                    justify-content: flex-start !important;
+                }
+                .contact-icon {
+                    width: 11px !important;
+                    height: 11px !important;
+                }
                 .section-experience-heading {
                     break-before: page !important;
                     page-break-before: always !important;
+                    margin-top: 0 !important;
                 }
                 h2.section-heading {
-                    margin-top: 14pt;
-                    margin-bottom: 8pt;
+                    margin-top: 10pt !important;
+                    margin-bottom: 5pt !important;
                     background: #f4f4f5 !important;
                     display: block !important;
-                    break-after: avoid !important;
+                    break-after: avoid-page !important;
                     page-break-after: avoid !important;
                     break-inside: avoid !important;
                     page-break-inside: avoid !important;
+                }
+                .summary-box {
+                    font-size: 8.5pt !important;
+                    line-height: 1.4 !important;
+                }
+                .philosophy-grid {
+                    display: grid !important;
+                    grid-template-columns: 1fr 1fr !important;
+                    gap: 5px 12px !important;
+                    margin-top: 5px !important;
+                }
+                .philosophy-item {
+                    font-size: 8pt !important;
+                    line-height: 1.35 !important;
+                    padding-left: 10px !important;
+                }
+                .philosophy-item strong {
+                    font-size: 8pt !important;
+                }
+                .skills-table {
+                    font-size: 8pt !important;
+                    display: table !important;
+                    width: 100% !important;
+                }
+                .skills-table tr {
+                    display: table-row !important;
+                }
+                .skills-table td {
+                    display: table-cell !important;
+                    padding: 2.5pt 0 !important;
+                    line-height: 1.35 !important;
+                }
+                .skills-table td.cat-name {
+                    width: 20% !important;
+                    font-size: 8pt !important;
+                    font-weight: 700 !important;
+                    margin-top: 0 !important;
+                }
+                .skills-table td.cat-content {
+                    width: 80% !important;
                 }
                 .company-header {
                     break-after: avoid !important;

@@ -194,6 +194,38 @@
       text-align: justify;
     }
 
+    ul.philosophy-list, .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      margin-top: 8px;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .philosophy-item, ul.philosophy-list li {
+      font-size: 12px;
+      color: var(--text-main);
+      line-height: 1.45;
+      text-align: justify;
+      position: relative;
+      padding-left: 14px;
+    }
+    .philosophy-item::before, ul.philosophy-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .philosophy-item strong, ul.philosophy-list li strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+    .philosophy-item em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
     /* SKILLS TABLE */
     .skills-table {
       width: 100%;
@@ -395,6 +427,10 @@
       .teaching-grid {
         grid-template-columns: 1fr;
       }
+      .philosophy-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
     }
 
     /* PRINT STYLES */
@@ -406,7 +442,7 @@
       }
       body {
         background: #ffffff !important;
-        font-size: 9.5pt;
+        font-size: 9pt;
         color: #000000 !important;
       }
       .no-print {
@@ -422,18 +458,54 @@
       }
       @page {
         size: A4;
-        margin: 12mm 10mm;
-      }
-      
-      /* Fix orphan heading: Section 03 starts cleanly on Page 2 in print */
-      .section-experience-heading {
-        break-before: page !important;
-        page-break-before: always !important;
+        margin: 10mm 10mm;
       }
 
+      /* Horizontal compact header in print */
+      .header-inner {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        text-align: left !important;
+        gap: 16px !important;
+      }
+      .candidate-avatar {
+        width: 68px !important;
+        height: 68px !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: 1px solid #d4d4d8 !important;
+      }
+      .resume-header {
+        margin-bottom: 8px !important;
+        padding-bottom: 6px !important;
+      }
+      .candidate-name {
+        font-size: 18pt !important;
+        margin-bottom: 2px !important;
+        line-height: 1.1 !important;
+      }
+      .candidate-title {
+        font-size: 9.5pt !important;
+        margin-bottom: 4px !important;
+        color: #3f3f46 !important;
+      }
+      .contact-bar {
+        font-size: 8pt !important;
+        gap: 4px 10px !important;
+        justify-content: flex-start !important;
+      }
+      .contact-icon {
+        width: 11px !important;
+        height: 11px !important;
+      }
+
+      /* Section headings */
       h2.section-heading {
-        margin-top: 14pt;
-        margin-bottom: 8pt;
+        margin-top: 10pt !important;
+        margin-bottom: 5pt !important;
+        padding: 3px 8px !important;
+        font-size: 9.5pt !important;
         background: #f4f4f5 !important;
         display: block !important;
         break-after: avoid-page !important;
@@ -442,24 +514,82 @@
         page-break-inside: avoid !important;
       }
 
+      /* Fix orphan heading: Section 03 starts cleanly on Page 2 in print */
+      .section-experience-heading {
+        break-before: page !important;
+        page-break-before: always !important;
+        margin-top: 0 !important;
+      }
+
+      /* Summary & Philosophy */
+      .summary-box {
+        font-size: 8.5pt !important;
+        line-height: 1.4 !important;
+      }
+      .philosophy-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 5px 12px !important;
+        margin-top: 5px !important;
+      }
+      .philosophy-item {
+        font-size: 8pt !important;
+        line-height: 1.35 !important;
+        padding-left: 10px !important;
+      }
+      .philosophy-item strong {
+        font-size: 8pt !important;
+      }
+
+      /* Skills table */
+      .skills-table {
+        font-size: 8pt !important;
+        display: table !important;
+        width: 100% !important;
+      }
+      .skills-table tr {
+        display: table-row !important;
+      }
+      .skills-table td {
+        display: table-cell !important;
+        padding: 2.5pt 0 !important;
+        line-height: 1.35 !important;
+      }
+      .skills-table td.cat-name {
+        width: 20% !important;
+        font-size: 8pt !important;
+        font-weight: 700 !important;
+        margin-top: 0 !important;
+      }
+      .skills-table td.cat-content {
+        width: 80% !important;
+      }
+
+      /* Company & Project break avoidance */
       .company-header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
         break-after: avoid-page !important;
         page-break-after: avoid !important;
       }
-
       .project-entry, .teaching-card {
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+      }
+      .project-top-row, .project-sub-row {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+      }
+      .teaching-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
       }
 
       .tech-pill-row {
         background: #f4f4f5 !important;
         border: 1px solid #e4e4e7 !important;
-      }
-
-      .candidate-avatar {
-        box-shadow: none !important;
-        border: 1px solid #d4d4d8 !important;
       }
 
       a {
@@ -522,7 +652,23 @@
     <!-- 01 / Summary -->
     <h2 class="section-heading">01 / Executive Summary & Architecture Philosophy</h2>
     <div class="summary-box">
-      <p>Technical Architect and Engineering Leader with 10 years of software craftsmanship, specializing in high-throughput distributed systems, enterprise event-driven cloud integrations, and AI-accelerated engineering workflows. Deep expertise in Domain-Driven Design (DDD), Hexagonal Architecture, CQRS, and Zero-Trust Cloud Infrastructure across Microsoft Azure and AWS. Pioneer in orchestrating Multi-Agent Systems (MAS) and Generative AI (GPT/Gemini) to transform vague business requirements into structured, spec-driven development backlogs. Proven track record leading cross-functional engineering teams and delivering mission-critical platforms for European and Japanese enterprise clients.</p>
+      <p style="margin-bottom: 8px;">
+        Senior Technical Architect and Engineering Leader with 10 years of production craftsmanship, specializing in mission-critical distributed systems, enterprise event-driven cloud integrations (Azure & AWS), and big data processing pipelines. Champion of vendor-neutral infrastructure (OpenTofu, Terragrunt, rootless Podman/OCI) and strict ISO 27001 / Zero-Trust security compliance. Pioneer in orchestrating Multi-Agent Systems (MAS) and architecting high-ROI, governed AI-augmented SDLC workflows with deep model-effort calibration and token economics.
+      </p>
+      <div class="philosophy-grid">
+        <div class="philosophy-item">
+          <strong>Pragmatic Simplicity:</strong> Champion Rich Hickey's <em>Simple over Easy</em>. Choose unentangled components, single-responsibility boundaries, and low cognitive overhead over premature abstraction and hype-driven complexity.
+        </div>
+        <div class="philosophy-item">
+          <strong>Domain Isolation:</strong> Safeguard core business invariants using Hexagonal Architecture (Ports & Adapters). Cloud services, ERPs, databases, and third-party APIs remain peripheral plug-ins, keeping domain logic 100% testable without mocks.
+        </div>
+        <div class="philosophy-item">
+          <strong>Vendor-Neutral Cloud & ISO 27001:</strong> Eliminate vendor lock-in via OpenTofu, Terragrunt, and rootless Podman/OCI runtimes. Enforce Zero-Trust architecture, Managed Identity, and least-privilege RBAC meeting rigorous ISO/IEC 27001 enterprise compliance.
+        </div>
+        <div class="philosophy-item">
+          <strong>Strategic AI & Token Economics:</strong> Architect deterministic AI workflows with Multi-Agent Systems (MAS) and MCP. Master model-task alignment, reasoning effort calibration, context budgeting, and cost-to-performance optimization to maximize enterprise ROI with zero hallucinations.
+        </div>
+      </div>
     </div>
 
     <!-- 02 / Technical Skills -->
@@ -533,24 +679,24 @@
         <td class="cat-content">C# (.NET 8/10), Python, PHP, TypeScript, Node.js, Go, Rust, SQL</td>
       </tr>
       <tr>
-        <td class="cat-name">Cloud & IaC</td>
-        <td class="cat-content">Azure (Functions isolated worker, Service Bus, Blob Storage, Event Grid, Key Vault, Managed Identity, Entra ID SSO), AWS (ECS, S3, RDS, Aurora MySQL, Redshift DWH, ALB, CloudFront, WAF, SQS, Lambda, Batch), Bicep (IaC), Terraform, Docker Compose</td>
+        <td class="cat-name">Cloud & IaC (Vendor-Neutral)</td>
+        <td class="cat-content">OpenTofu, Terragrunt, Bicep, Terraform, Podman (rootless / daemonless OCI), Docker Compose; Multi-Cloud Azure (Functions isolated, Service Bus, Blob, Event Grid, Key Vault, Entra ID SSO) & AWS (ECS, S3, RDS, Aurora MySQL, Redshift DWH, ALB, CloudFront, WAF, SQS, Lambda, Batch)</td>
       </tr>
       <tr>
-        <td class="cat-name">Architecture</td>
-        <td class="cat-content">Domain-Driven Design (DDD), Hexagonal Architecture / Ports & Adapters, Event-Driven Architecture (EDA), CQRS, Microservices, Transactional Outbox, Zero-Trust Security, OpenAPI/Bruno Contracts</td>
+        <td class="cat-name">Architecture & Security Governance</td>
+        <td class="cat-content">Domain-Driven Design (DDD), Hexagonal Architecture / Ports & Adapters, Event-Driven Architecture (EDA), CQRS, Microservices, Transactional Outbox, ISO/IEC 27001 Compliance, Zero-Trust Architecture, Secret Zero, Least Privilege (RBAC/ABAC), OpenAPI/Bruno Contracts</td>
       </tr>
       <tr>
         <td class="cat-name">Data & Storage</td>
         <td class="cat-content">PostgreSQL, AWS Redshift (DWH), Aurora MySQL, Redis, Polars, PyArrow, Pandas, Kafka, MinIO/S3, Databricks, Snowflake</td>
       </tr>
       <tr>
-        <td class="cat-name">AI & Acceleration</td>
-        <td class="cat-content">Multi-Agent Systems (MAS), Generative AI (GPT-4o, Gemini Pro, Claude), Spec-Driven Development, Context Grounding, Human-in-the-Loop Verification, GitHub Copilot, Cursor</td>
+        <td class="cat-name">AI Systems & Strategic Orchestration</td>
+        <td class="cat-content">Multi-Agent Systems (MAS), Model Context Protocol (MCP), Spec-Driven AI SDLC, Model-Task Alignment & Reasoning Effort Calibration, Context Budgeting & Token Economics (Inference ROI Optimization across Claude, GPT, Gemini, Local SLMs), Trajectory Evaluation (LLM-as-a-Judge), Human-in-the-Loop Governance</td>
       </tr>
       <tr>
         <td class="cat-name">Testing & CI/CD</td>
-        <td class="cat-content">Azure DevOps Pipelines, GitHub Actions, GitLab CI/CD, xUnit, Moq, Azurite, Pest, PHPUnit, Jest, Pytest, Polly Resilience</td>
+        <td class="cat-content">Azure DevOps Pipelines, GitHub Actions, GitLab CI/CD, DevSecOps Security Scanning, xUnit, Moq, Azurite, Pest, PHPUnit, Jest, Pytest, Polly Resilience</td>
       </tr>
     </table>
 
