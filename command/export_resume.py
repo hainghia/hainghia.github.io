@@ -46,6 +46,11 @@ def main() -> None:
         stylesheets=[
             CSS(
                 string="""
+                * {
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                    color-adjust: exact !important;
+                }
                 @page {
                     size: A4;
                     margin: 12mm 10mm;
@@ -65,13 +70,31 @@ def main() -> None:
                     box-shadow: none !important;
                     border: none !important;
                 }
-                h2.section-heading, .company-header {
+                .section-experience-heading {
+                    break-before: page !important;
+                    page-break-before: always !important;
+                }
+                h2.section-heading {
+                    margin-top: 14pt;
+                    margin-bottom: 8pt;
+                    background: #f4f4f5 !important;
+                    display: block !important;
+                    break-after: avoid !important;
+                    page-break-after: avoid !important;
+                    break-inside: avoid !important;
+                    page-break-inside: avoid !important;
+                }
+                .company-header {
                     break-after: avoid !important;
                     page-break-after: avoid !important;
                 }
                 .project-entry, .teaching-card {
                     page-break-inside: avoid !important;
                     break-inside: avoid !important;
+                }
+                .tech-pill-row {
+                    background: #f4f4f5 !important;
+                    border: 1px solid #e4e4e7 !important;
                 }
                 """
             ),
