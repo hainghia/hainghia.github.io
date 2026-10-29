@@ -653,20 +653,20 @@
     <h2 class="section-heading">01 / Tóm tắt Năng lực & Triết lý Kiến trúc</h2>
     <div class="summary-box">
       <p style="margin-bottom: 8px;">
-        Kỹ sư Trưởng Kiến trúc (Senior Technical Architect) và Trưởng nhóm Kỹ thuật (Tech Lead) với 10 năm kinh nghiệm thực chiến chuyên sâu về hệ thống phân tán chịu tải cao, tích hợp đám mây hướng sự kiện (Azure & AWS) và xử lý dữ liệu lớn. Tiên phong giải pháp hạ tầng phi phụ thuộc nhà cung cấp (OpenTofu, Terragrunt, Podman rootless OCI) và tuân thủ nghiêm ngặt chuẩn an toàn thông tin doanh nghiệp ISO 27001 / Zero-Trust. Dày dạn kinh nghiệm thiết kế quy trình kỹ nghệ AI (AI SDLC) hiệu năng cao, làm chủ bản chất mô hình, phân bổ reasoning effort/ngân sách token và tối ưu hóa chi phí (ROI) cho doanh nghiệp.
+        Kỹ sư Trưởng Kiến trúc (Technical Architect) với 10 năm kinh nghiệm thiết kế hệ thống phân tán, tích hợp đám mây doanh nghiệp (Azure & AWS) và xử lý dữ liệu lớn. Định hướng hạ tầng độc lập nhà cung cấp với OpenTofu, Terragrunt và Podman (rootless OCI); áp dụng kiến trúc Zero-Trust đáp ứng tiêu chuẩn an toàn thông tin ISO/IEC 27001. Xây dựng quy trình kỹ nghệ phần mềm kết hợp AI (Spec-Driven SDLC, Multi-Agent Systems), tối ưu hiệu năng mô hình theo từng mức effort và cân bằng bài toán chi phí token (ROI) trong thực tế.
       </p>
       <div class="philosophy-grid">
         <div class="philosophy-item">
-          <strong>Tính Đơn giản Thực dụng:</strong> Thực hành nguyên lý <em>Simple over Easy</em> (Rich Hickey). Ưu tiên bóc tách ranh giới rõ ràng, giảm tải nhận thức (cognitive load) và loại bỏ trừu tượng hóa sai lầm thay vì chạy theo xu hướng phức tạp hóa sớm.
+          <strong>Đơn giản hóa Thực tế:</strong> Áp dụng tư duy <em>Simple over Easy</em> (Rich Hickey). Ưu tiên ranh giới module rõ ràng, giảm tải nhận thức và tránh trừu tượng hóa sớm; loại bỏ độ phức tạp không phục vụ trực tiếp bài toán kinh doanh.
         </div>
         <div class="philosophy-item">
-          <strong>Phân định Ranh giới & Cô lập Nghiệp vụ:</strong> Bảo vệ quy tắc nghiệp vụ cốt lõi (Domain Core) qua kiến trúc Hexagonal (Ports & Adapters). Hạ tầng Cloud, ERP, Database và Vendor API chỉ là adapter ở rìa — dễ kiểm thử độc lập và thay thế mà không gây ô nhiễm nghiệp vụ.
+          <strong>Cô lập Ranh giới Nghiệp vụ:</strong> Tách biệt logic cốt lõi bằng kiến trúc Hexagonal (Ports & Adapters). Cloud, ERP, Database và Vendor API giữ vai trò adapter ở rìa, giúp hệ thống dễ kiểm thử độc lập và linh hoạt khi thay đổi công nghệ.
         </div>
         <div class="philosophy-item">
-          <strong>Đám mây Phi Phụ thuộc & ISO 27001:</strong> Xóa bỏ vendor lock-in bằng OpenTofu, Terragrunt và container Podman không cần daemon/root. Thực thi kiến trúc Zero-Trust, Managed Identity và phân quyền tối thiểu (least privilege) đáp ứng chuẩn an toàn thông tin quốc tế ISO/IEC 27001.
+          <strong>Hạ tầng Độc lập & Chuẩn ISO 27001:</strong> Tránh phụ thuộc nhà cung cấp bằng OpenTofu, Terragrunt và runtime container Podman (rootless OCI). Áp dụng mô hình Zero-Trust, định danh Managed Identity và phân quyền tối thiểu (least privilege) theo chuẩn ISO/IEC 27001.
         </div>
         <div class="philosophy-item">
-          <strong>Điều phối AI Chiến lược & Tối ưu Chi phí:</strong> Thiết kế quy trình AI khép kín với Hệ thống Đa Tác nhân (MAS) và MCP. Làm chủ bản chất từng model, phân bổ reasoning effort, context window và tối ưu hóa chi phí token/ROI tối đa mà loại bỏ triệt để hallucination.
+          <strong>Quy trình AI & Cân đối Chi phí:</strong> Xây dựng workflow kỹ thuật kết hợp Multi-Agent Systems (MAS) và MCP. Hiểu rõ thế mạnh từng model và mức effort để phân bổ tác vụ hợp lý; tối ưu context window và chi phí token nhằm đạt hiệu quả đầu tư (ROI) thiết thực.
         </div>
       </div>
     </div>
@@ -679,20 +679,20 @@
         <td class="cat-content">C# (.NET 8/10), Python, PHP, TypeScript, Node.js, Go, Rust, SQL</td>
       </tr>
       <tr>
-        <td class="cat-name">Đám mây & IaC (Anti-Vendor Lock-in)</td>
-        <td class="cat-content">OpenTofu, Terragrunt, Bicep, Terraform, Podman (rootless / daemonless OCI), Docker Compose; Đa đám mây Azure (Functions isolated, Service Bus, Blob, Event Grid, Key Vault, Entra ID SSO) & AWS (ECS, S3, RDS, Aurora MySQL, Redshift DWH, ALB, CloudFront, WAF, SQS, Lambda, Batch)</td>
+        <td class="cat-name">Đám mây & Hạ tầng</td>
+        <td class="cat-content">OpenTofu, Terragrunt, Bicep, Terraform, Podman (rootless OCI), Docker Compose; Đa đám mây Azure (Functions isolated, Service Bus, Blob, Event Grid, Key Vault, Entra ID SSO) & AWS (ECS, S3, RDS, Aurora MySQL, Redshift DWH, ALB, CloudFront, WAF, SQS, Lambda, Batch)</td>
       </tr>
       <tr>
         <td class="cat-name">Kiến trúc & An toàn Thông tin</td>
-        <td class="cat-content">Domain-Driven Design (DDD), Hexagonal Architecture / Ports & Adapters, Kiến trúc Hướng sự kiện (Event-Driven), CQRS, Microservices, Transactional Outbox, Tuân thủ ISO/IEC 27001, Kiến trúc Zero-Trust, Secret Zero, Phân quyền Tối thiểu (RBAC/ABAC), Hợp đồng API (OpenAPI, Bruno)</td>
+        <td class="cat-content">Domain-Driven Design (DDD), Hexagonal Architecture / Ports & Adapters, Kiến trúc Hướng sự kiện (EDA), CQRS, Microservices, Transactional Outbox, Tuân thủ ISO/IEC 27001, Kiến trúc Zero-Trust, Secret Zero, Phân quyền Tối thiểu (RBAC/ABAC), Hợp đồng API (OpenAPI, Bruno)</td>
       </tr>
       <tr>
         <td class="cat-name">Dữ liệu & Lưu trữ</td>
         <td class="cat-content">PostgreSQL, AWS Redshift (DWH), Aurora MySQL, Redis, Polars, PyArrow, Pandas, Kafka, MinIO/S3, Databricks, Snowflake</td>
       </tr>
       <tr>
-        <td class="cat-name">Hệ thống AI & Điều phối Chiến lược</td>
-        <td class="cat-content">Hệ thống Đa Tác nhân (MAS), Model Context Protocol (MCP), Spec-Driven AI SDLC, Phân định Task theo Model & Cân bằng Reasoning Effort, Quản trị Ngân sách Context & Kinh tế học Token (Token Economics / Tối ưu ROI qua Claude, GPT, Gemini, Local SLMs), Đánh giá Trajectory (LLM-as-a-Judge), Giám sát Con người (Human-in-the-Loop)</td>
+        <td class="cat-name">Hệ thống AI & Quy trình Kỹ nghệ</td>
+        <td class="cat-content">Hệ thống Đa Tác nhân (MAS), Model Context Protocol (MCP), Spec-Driven AI SDLC, Phân định Tác vụ theo Model & Cân bằng Reasoning Effort, Quản trị Ngân sách Context & Kinh tế học Token (Tối ưu ROI qua Claude, GPT, Gemini, Local SLMs), Đánh giá Trajectory, Kiểm chứng Con người (Human-in-the-Loop)</td>
       </tr>
       <tr>
         <td class="cat-name">Kiểm thử & CI/CD</td>
@@ -871,7 +871,7 @@
           <li><strong>Caching Đa tầng & Tối ưu DB:</strong> Thiết kế chiến lược caching Redis đa tầng kết hợp tối ưu chỉ mục PostgreSQL, loại bỏ độ trễ khi tải trang chủ.</li>
           <li><strong>Kiến trúc Dữ liệu Không gian (Geospatial):</strong> Triển khai giải pháp PostGIS cung cấp sức mạnh cho toàn bộ tính năng bản đồ, tính khoảng cách và truy vấn địa điểm lân cận.</li>
           <li><strong>Engine Dòng thời gian (Timeline Feed):</strong> Thiết kế logic news feed "Khám phá" sử dụng mô hình Hybrid Fan-out/Pull giải quyết bài toán "Người nổi tiếng" cùng thuật toán xếp hạng tương tác.</li>
-          <li><strong>Quy trình Bidding Tăng tốc bởi AI:</strong> Tiên phong áp dụng Multi-Agent Systems và Generative AI trong giai đoạn Audit để chắt lọc nhanh yêu cầu khách hàng, giành được hợp đồng Giai đoạn 3.</li>
+          <li><strong>Quy trình Khảo sát Yêu cầu bằng AI:</strong> Áp dụng Multi-Agent Systems và LLM trong giai đoạn kỹ thuật sơ bộ để bóc tách yêu cầu phức tạp của khách hàng thành đặc tả rõ ràng, giúp đội ngũ giành được hợp đồng Giai đoạn 3.</li>
         </ul>
         <div class="tech-pill-row">Công nghệ: NestJS, TypeScript, Next.js, Prisma, Python, Polars, PyArrow, Flutter, PostgreSQL, PostGIS, Redis, Terraform, AWS (ECS, Rekognition, Cognito, S3, Lambda, SQS)</div>
       </div>
