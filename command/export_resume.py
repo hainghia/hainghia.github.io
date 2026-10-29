@@ -108,7 +108,8 @@ def main() -> None:
                     width: 11px !important;
                     height: 11px !important;
                 }
-                .section-experience-heading {
+                .section-experience-heading,
+                .section-mentorship-heading {
                     break-before: page !important;
                     page-break-before: always !important;
                     margin-top: 0 !important;

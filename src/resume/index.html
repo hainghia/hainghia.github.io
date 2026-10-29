@@ -514,8 +514,9 @@
         page-break-inside: avoid !important;
       }
 
-      /* Fix orphan heading: Section 03 starts cleanly on Page 2 in print */
-      .section-experience-heading {
+      /* Fix orphan heading: Section 03 & Section 04 start cleanly on new pages in print */
+      .section-experience-heading,
+      .section-mentorship-heading {
         break-before: page !important;
         page-break-before: always !important;
         margin-top: 0 !important;
@@ -1066,7 +1067,7 @@
     </div>
 
     <!-- 04 / Mentorship & Training -->
-    <h2 class="section-heading">04 / Technical Mentorship & Thought Leadership</h2>
+    <h2 class="section-heading section-mentorship-heading">04 / Technical Mentorship & Thought Leadership</h2>
     <div class="teaching-grid">
       <div class="teaching-card">
         <strong>SQL Advanced — Query Execution & Architecture</strong>
