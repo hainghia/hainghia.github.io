@@ -2,1315 +2,861 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ho Hai Nghia — Senior Technical Architect Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --text-main: #09090b;
+      --text-muted: #52525b;
+      --text-subtle: #71717a;
+      --border-color: #e4e4e7;
+      --border-dark: #18181b;
+      --bg-pill: #f4f4f5;
+      --accent: #0284c7;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-page);
+      line-height: 1.55;
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .no-print {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-print {
+      background: #09090b;
+      color: #ffffff;
+      border: 1px solid #27272a;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-print:hover { background: #27272a; }
+
+    .lang-switcher {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-subtle);
+    }
+    .lang-switcher a {
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+    .lang-switcher a.active {
+      color: var(--text-main);
+      background: #e4e4e7;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto 40px auto;
+      background: var(--bg-card);
+      padding: 48px 56px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--border-color);
+    }
+
+    /* TOP HEADER */
+    header {
+      border-bottom: 2px solid var(--border-dark);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .candidate-name {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .candidate-title {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .contact-bar a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted var(--border-color);
+    }
+    .contact-bar a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* SECTION HEADINGS (Typst Style) */
+    h2.section-heading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-main);
+      background: var(--bg-pill);
+      padding: 4px 10px;
+      margin-top: 24px;
+      margin-bottom: 14px;
+      border-left: 3px solid var(--border-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+
+    .summary-box {
+      font-size: 13px;
+      color: var(--text-main);
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* SKILLS TABLE */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .skills-table tr {
+      border-bottom: 1px solid var(--border-color);
+    }
+    .skills-table tr:last-child {
+      border-bottom: none;
+    }
+    .skills-table td {
+      padding: 6px 0;
+      vertical-align: top;
+    }
+    .skills-table td.cat-name {
+      width: 22%;
+      font-weight: 700;
+      color: var(--text-main);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+    }
+    .skills-table td.cat-content {
+      width: 78%;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* EXPERIENCE ENTRIES */
+    .company-block {
+      margin-bottom: 24px;
+    }
+    .company-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    .company-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .company-title-role {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .company-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-subtle);
+      font-weight: 500;
+    }
+
+    .project-entry {
+      margin-bottom: 18px;
+      padding-left: 12px;
+      border-left: 2px solid var(--border-color);
+    }
+    .project-entry:hover {
+      border-left-color: var(--border-dark);
+    }
+    .project-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .project-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .project-duration {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-subtle);
+    }
+    .project-sub-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .project-role-badge {
+      font-weight: 600;
+      color: #0369a1;
+    }
+    .project-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    ul.bullet-points {
+      list-style-type: square;
+      padding-left: 18px;
+      margin-bottom: 6px;
+    }
+    ul.bullet-points li {
+      font-size: 12.5px;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      line-height: 1.55;
+    }
+    ul.bullet-points li strong {
+      color: var(--text-main);
+    }
+
+    .tech-pill-row {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 5px;
+      background: var(--bg-pill);
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* MENTORSHIP / TEACHING */
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .teaching-card {
+      background: var(--bg-pill);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 10px 14px;
+    }
+    .teaching-card strong {
+      font-size: 12.5px;
+      color: var(--text-main);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .teaching-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .page {
+        padding: 24px 18px;
+        margin: 0;
+        border-radius: 0;
+        border: none;
+      }
+      .contact-bar {
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+      }
+      .skills-table, .skills-table tbody, .skills-table tr, .skills-table td {
+        display: block;
+        width: 100% !important;
+      }
+      .skills-table td.cat-name {
+        margin-top: 8px;
+        font-weight: 800;
+      }
+      .company-header {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .project-top-row, .project-sub-row {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .teaching-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PRINT STYLES */
     @media print {
-      body { background: #fff !important; }
-      .no-print { display: none !important; }
-      table { page-break-inside: avoid; }
-      div { page-break-inside: auto; }
-      h1, h2, h3, h4, h5, h6 { page-break-after: avoid; }
-      img { page-break-inside: avoid; }
-      main { width: 100% !important; margin: 0 !important; }
-      .container { box-shadow: none !important; margin: 0 !important; padding: 0 !important; }
-      @page { margin: 10mm; }
+      body {
+        background: #ffffff !important;
+        font-size: 9.5pt;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .page {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      @page {
+        size: A4;
+        margin: 12mm 10mm;
+      }
+      h2.section-heading {
+        margin-top: 14pt;
+        margin-bottom: 8pt;
+        background: #f4f4f5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      h2.section-heading, .company-header {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+      .project-entry, .teaching-card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+      .tech-pill-row {
+        background: #f4f4f5 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a {
+        color: #000000 !important;
+        text-decoration: none !important;
+      }
     }
   </style>
 </head>
-<body style="width: 100%;background: #565656">
-<main style="width: 780px; margin: 0 auto">
-    <div class="no-print" style="text-align: right; padding: 5px 10px; display: flex; justify-content: flex-end; align-items: center; gap: 10px;">
-    <button onclick="window.print()" style="background: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Print / PDF</button>
-    <div>
-      <a href="index.html" style="text-decoration: none; color: #fff; font-weight: bold; padding: 5px;">EN</a> |
-      <a href="index_vi.html" style="text-decoration: none; color: #ccc; padding: 5px;">VI</a>
+<body>
+  <!-- Print & Language Controls -->
+  <div class="no-print">
+    <button class="btn-print" onclick="window.print()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      Print / PDF
+    </button>
+    <div class="lang-switcher">
+      <a href="index.html" class="active">EN</a>
+      <span>|</span>
+      <a href="index_vi.html">VI</a>
     </div>
   </div>
-  <div class="container" style="width: 100%; background: #fff; display: grid; padding: 0 10px; margin: auto; font-family: 'Roboto', sans-serif; color: black !important;box-sizing: border-box;">
-    <div class="row" style="display: flex;flex-wrap: wrap;margin-right: -10px; margin-left: -10px;box-sizing: border-box;">
-      <!-- Left sidebar -->
-      <div class="col-4" style="display: block; position: relative; width: 100%; padding-right: 10px; padding-left: 10px; flex: 0 0 auto; flex: 0 0 33.333333%; max-width: 33.333333%;box-sizing: border-box;">
-        <div style="display: flex; flex-direction: column; background: #f7f7ff; width: 100%; margin:10px 0; text-align: center; box-shadow: 0 2px 6px 0 #dadafda6, 0 2px 6px 0 #ceceee8a;">
-          <!-- Infomations  -->
-          <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-            <img src="https://hainghia.github.io/images/avatar.jpg" alt="Avatar" style="width: 95px; height: auto; border-radius: 100px; background: #bdbdbd;"></img>
-            <h1 style="margin: 5px 0">Ho Hai Nghia</h1>
-            <h3 style="margin: 5px 0; font-weight: 600">Technical Architect</h3>
-            <hr></hr>
-            <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%">
-              <!-- Address-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/map.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">Da Nang, Viet Nam</p>
-                </div>
-              </div>
-              <!--Phone-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/phone.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">+84 975 254 933</p>
-                </div>
-              </div>
-              <!--Email-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/email.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">hohainghia19@gmail.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr style=" width: 70%; height: 1px; margin-bottom: 15px; border: none; border-bottom: double 2px #565656;"></hr>
-          <!-- Education -->
-          <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-            <h3 style="margin: 5px 0; width: 100%; text-align: left;">EDUCATION</h3>
-            <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%">
-              <!-- Da Nang University of Science and Technology-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/icon-dut.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">
-                    Da Nang University of Science and Technology
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr style=" width: 70%; height: 1px; margin-bottom: 15px; border: none; border-bottom: double 2px #565656;"></hr>
-          <!-- Skills  -->
-          <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-            <h3 style="margin: 5px 0; width: 100%; text-align: left;">SKILLS</h3>
-            <!-- Programming language-->
-            <h4 style="margin: 5px 0; width: 100%; text-align: left; margin: 10px 0">Programming language</h4>
-            <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%">
-              <!-- Python-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/python.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">Python</p>
-                </div>
-              </div>
-              <!--PHP-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/php.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">PHP</p>
-                </div>
-              </div>
-              <!--Javascript-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/js.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">Javascript</p>
-                </div>
-              </div>
-              <!--Terraform-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/terraform.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">Terraform</p>
-                </div>
-              </div>
-              <!--SQL-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/sql.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">SQL</p>
-                </div>
-              </div>
-              <!--RUST-->
-              <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                <div style="width: 10%">
-                  <div style="width: 16px; height: 16px;">
-                    <img src="https://hainghia.github.io//images/icon/rust.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                  </div>
-                </div>
-                <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                  <p style="margin: 5px 0">Rust</p>
-                </div>
-              </div>
-              <!--Backend Framework-->
-              <h4 style="margin: 5px 0; width: 100%; text-align: left; margin: 10px 0">Backend Framework</h4>
-              <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%">
-                <!-- Laravel-->
-                <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                  <div style="width: 10%">
-                    <div style="width: 16px; height: 16px;">
-                      <img src="https://hainghia.github.io//images/icon/laravel.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                    </div>
-                  </div>
-                  <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                    <p style="margin: 5px 0">Laravel</p>
-                  </div>
-                </div>
-                <!--Flask-->
-                <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                  <div style="width: 10%">
-                    <div style="width: 16px; height: 16px;">
-                      <img src="https://hainghia.github.io//images/icon/flask.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                    </div>
-                  </div>
-                  <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                    <p style="margin: 5px 0">Flask</p>
-                  </div>
-                </div>
-                <!--AWS Chalice-->
-                <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                  <div style="width: 10%">
-                    <div style="width: 16px; height: 16px;">
-                      <img src="https://hainghia.github.io//images/icon/chalice.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                    </div>
-                  </div>
-                  <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                    <p style="margin: 5px 0">AWS Chalice</p>
-                  </div>
-                </div>
-                <!--Gin-Gonic-->
-                <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                  <div style="width: 10%">
-                    <div style="width: 16px; height: 16px;">
-                      <img src="https://hainghia.github.io//images/icon/gin.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                    </div>
-                  </div>
-                  <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                    <p style="margin: 5px 0">Gin-Gonic</p>
-                  </div>
-                </div>
-                <!--Tokio Axum-->
-                <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                  <div style="width: 10%">
-                    <div style="width: 16px; height: 16px;">
-                      <img src="https://hainghia.github.io//images/icon/tokio_axum.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                    </div>
-                  </div>
-                  <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                    <p style="margin: 5px 0">Tokio Axum</p>
-                  </div>
-                </div>
-              </div>
-              <!--AI & Methodologies-->
-              <h4 style="margin: 5px 0; width: 100%; text-align: left; margin: 10px 0">AI & Methodologies</h4>
-              <div style="display: flex; flex-direction: column; align-items: flex-start; width: 100%">
-                <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                  <div style="width: 10%">
-                    <div style="width: 16px; height: 16px;">
-                      <img src="https://hainghia.github.io//images/icon/chatgpt.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                    </div>
-                  </div>
-                  <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                    <p style="margin: 5px 0">Generative AI (GPT, Gemini)</p>
-                  </div>
-                </div>
-                <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                  <div style="width: 10%">
-                    <div style="width: 16px; height: 16px;">
-                      <img src="https://hainghia.github.io//images/icon/mas.png" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                    </div>
-                  </div>
-                  <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                    <p style="margin: 5px 0">Multi-Agent Systems (MAS)</p>
-                  </div>
-                </div>
-                <div style="display: flex; flex-direction: row; align-items: center; width: 100%">
-                  <div style="width: 10%">
-                    <div style="width: 16px; height: 16px;">
-                      <img src="https://hainghia.github.io//images/icon/spec-ai.svg" alt="Generative AI Icon" style="width: 16px; height: 16px;"/>
-                    </div>
-                  </div>
-                  <div style="width: 90%; margin-left: 10px; display: flex; justify-content: flex-start;">
-                    <p style="margin: 5px 0">Spec-Driven Development</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr style=" width: 70%; height: 1px; margin-bottom: 15px; border: none; border-bottom: double 2px #565656;">
-        </div>
+
+  <main class="page">
+    <!-- Header -->
+    <header>
+      <h1 class="candidate-name">Ho Hai Nghia</h1>
+      <div class="candidate-title">Senior Technical Architect · Distributed Systems & Cloud Integration</div>
+      <div class="contact-bar">
+        <span>📍 Da Nang, Vietnam</span>
+        <span>✉️ <a href="mailto:hohainghia19@gmail.com">hohainghia19@gmail.com</a></span>
+        <span>📞 +84 975 254 933</span>
+        <span>🐙 <a href="https://github.com/hainghia" target="_blank" rel="noopener">github.com/hainghia</a></span>
+        <span>💼 <a href="https://www.linkedin.com/in/hainghia" target="_blank" rel="noopener">linkedin.com/in/hainghia</a></span>
       </div>
-      <!-- Main Content -->
-      <div class="col-6" style="display: block; position: relative; width: 100%; padding-right: 10px; padding-left: 10px; flex: 0 0 auto; flex: 0 0 66.666667%; max-width: 66.666667%;box-sizing: border-box;">
-        <!-- PROFESSIONAL SUMMARY-->
-        <div class="professional-summary" style="box-sizing: border-box; display: flex; flex-direction: column; background: #f7f7ff; width: 100%; padding:10px 5px;text-align: center; box-shadow: 0 2px 6px 0 #dadafda6, 0 2px 6px 0 #ceceee8a;">
-          <h2 style="margin: 5px 0;">PROFESSIONAL SUMMARY</h2>
-          <div style="display: flex; flex-direction: column; text-align: start">
-            <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-              <li>
-                A Technical Architect/Leader with 10 years of experience, specializing in leading the design, optimization, and scaling of complex, high-load distributed systems.
-              </li>
-              <li>
-                Pioneered AI-augmented workflows in pre-sales and bidding phases. Utilized Multi-Agent Systems (MAS) and Generative AI (GPT, Gemini) to rapidly transform ambiguous business requirements into structured, spec-driven development backlogs, accelerating delivery and optimizing project costs.
-              </li>
-              <li>
-                Deep expertise in architecting event-driven and data-intensive systems, applying Microservices, Domain-Driven Design (DDD), and Hexagonal Architecture principles.
-              </li>
-              <li>
-                Proven hands-on capability in specialized domains:
-                <ul style="margin-inline-start: 20px; padding-inline-start: 0; list-style-type: circle;">
-                  <li>Data Engineering & CDP: Architected CDP platforms, ETL pipelines (Python, Polars), with deep expertise in the analysis and processing of Big Data (AWS Redshift, Snowflake, Databricks).</li>
-                  <li>Affiliate Marketing: Designed Affiliate Networking (Performance Partnership) systems.</li>
-                  <li>Social & Geo-spatial: Designed high-performance social feeds (Hybrid Fan-out/Pull Model) and complex geo-spatial systems (PostGIS).</li>
-                  <li>Enterprise Integration & Cloud: Enterprise ERP integration (Dynamics 365 F&O, Lasernet, Certified Partner PDP Platform) on event-driven cloud architecture (Azure Functions, Service Bus, Blob Storage, Event Grid).</li>
-                </ul>
-              </li>
-              <li>
-                Extensive experience in auditing, refactoring, and optimizing MVP systems (e.g., synchronous to asynchronous, DB query/caching) for scalability.
-              </li>
-            </ul>
-          </div>
+    </header>
+
+    <!-- 01 / Summary -->
+    <h2 class="section-heading">01 / Executive Summary & Architecture Philosophy</h2>
+    <div class="summary-box">
+      <p>Technical Architect and Engineering Leader with 10 years of software craftsmanship, specializing in high-throughput distributed systems, enterprise event-driven cloud integrations, and AI-accelerated engineering workflows. Deep expertise in Domain-Driven Design (DDD), Hexagonal Architecture, CQRS, and Zero-Trust Cloud Infrastructure across Microsoft Azure and AWS. Pioneer in orchestrating Multi-Agent Systems (MAS) and Generative AI (GPT/Gemini) to transform vague business requirements into structured, spec-driven development backlogs. Proven track record leading cross-functional engineering teams and delivering mission-critical platforms for European and Japanese enterprise clients.</p>
+    </div>
+
+    <!-- 02 / Technical Skills -->
+    <h2 class="section-heading">02 / Technical Competencies</h2>
+    <table class="skills-table">
+      <tr>
+        <td class="cat-name">Languages</td>
+        <td class="cat-content">C# (.NET 8/10), Python, PHP, TypeScript, Node.js, Go, Rust, SQL</td>
+      </tr>
+      <tr>
+        <td class="cat-name">Cloud & IaC</td>
+        <td class="cat-content">Azure (Functions isolated worker, Service Bus, Blob Storage, Event Grid, Key Vault, Managed Identity, Entra ID SSO), AWS (ECS, S3, RDS, Aurora MySQL, Redshift DWH, ALB, CloudFront, WAF, SQS, Lambda, Batch), Bicep (IaC), Terraform, Docker Compose</td>
+      </tr>
+      <tr>
+        <td class="cat-name">Architecture</td>
+        <td class="cat-content">Domain-Driven Design (DDD), Hexagonal Architecture / Ports & Adapters, Event-Driven Architecture (EDA), CQRS, Microservices, Transactional Outbox, Zero-Trust Security, OpenAPI/Bruno Contracts</td>
+      </tr>
+      <tr>
+        <td class="cat-name">Data & Storage</td>
+        <td class="cat-content">PostgreSQL, AWS Redshift (DWH), Aurora MySQL, Redis, Polars, PyArrow, Pandas, Kafka, MinIO/S3, Databricks, Snowflake</td>
+      </tr>
+      <tr>
+        <td class="cat-name">AI & Acceleration</td>
+        <td class="cat-content">Multi-Agent Systems (MAS), Generative AI (GPT-4o, Gemini Pro, Claude), Spec-Driven Development, Context Grounding, Human-in-the-Loop Verification, GitHub Copilot, Cursor</td>
+      </tr>
+      <tr>
+        <td class="cat-name">Testing & CI/CD</td>
+        <td class="cat-content">Azure DevOps Pipelines, GitHub Actions, GitLab CI/CD, xUnit, Moq, Azurite, Pest, PHPUnit, Jest, Pytest, Polly Resilience</td>
+      </tr>
+    </table>
+
+    <!-- 03 / Professional Experience -->
+    <h2 class="section-heading">03 / Professional Experience</h2>
+
+    <!-- Company 1: Kaopiz -->
+    <div class="company-block">
+      <div class="company-header">
+        <div>
+          <span class="company-name">Kaopiz</span>
+          <span class="company-title-role"> — Technical Leader</span>
         </div>
-        <!-- TECHNICAL SKILLS -->
-        <div class="professional-summary" style="box-sizing: border-box; display: flex; flex-direction: column; background: #f7f7ff; width: 100%; padding:10px 5px;text-align: center; box-shadow: 0 2px 6px 0 #dadafda6, 0 2px 6px 0 #ceceee8a;">
-          <h2 style="margin: 5px 0;">TECHNICAL SKILLS</h2>
-          <div style="display: flex; flex-direction: column; text-align: start">
-            <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-              <li><span style="font-weight: bold; margin-right: 1px;">Programming Languages:</span> Python, PHP, Nodejs, C# (.NET), Rust</li>
-              <li><span style="font-weight: bold; margin-right: 1px;">Backend & Frameworks:</span> Azure Functions (.NET), ASP.NET Core, NestJS, NextJS, Laravel, Flask, Django, Tokio Axum</li>
-              <li><span style="font-weight: bold; margin-right: 1px;">.NET & Azure:</span> C# (.NET 8/10), Azure Functions (isolated worker), ASP.NET Core, Azure Service Bus (sessions, DLQ), Azure Blob Storage, Azure Event Grid, Key Vault, Managed Identity, Microsoft Entra ID (SSO), Application Insights, OpenTelemetry, Bicep (IaC), Azure DevOps Pipelines, Polly, xUnit</li>
-              <li><span style="font-weight: bold; margin-right: 1px;">Database & Data:</span> PostgreSQL, AWS Redshift, MySQL, Redis, Polars, Pandas</li>
-              <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure & DevOps:</span> Bicep, Terraform (IaC), Azure, AWS (ECS, S3, RDS, ALB, CloudFront, WAF), Docker</li>
-              <li><span style="font-weight: bold; margin-right: 1px;">Event-Driven Architecture:</span> Azure Service Bus, Azure Event Grid, AWS SQS, AWS Lambda, AWS Batch, EventBridge, Kafka, Flink</li>
-              <li><span style="font-weight: bold; margin-right: 1px;">AI & Acceleration:</span> Generative AI (GPT, Gemini), Multi-Agent Systems (MAS), Spec-Driven Development, GitHub Copilot, Cursor</li>
-              <li><span style="font-weight: bold; margin-right: 1px;">CI/CD:</span> Azure DevOps Pipelines, GitHub Actions, GitLab CI/CD, AWS CodePipeline</li>
-            </ul>
-          </div>
+        <span class="company-period">April 2026 – Present</span>
+      </div>
+
+      <!-- Project 1 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">E-Invoicing Integration Platform: Dynamics 365 F&O × Lasernet × Azure Functions × Certified PDP Platform</span>
+          <span class="project-duration">September 2026 – Present</span>
         </div>
-        <hr style="page-break-after: always;">
+        <div class="project-sub-row">
+          <span class="project-role-badge">Technical Lead · 8 Members</span>
+          <span>Enterprise B2B E-Invoicing · French Reform (Factur-X / Certified PDP)</span>
+        </div>
+        <div class="project-desc">
+          Architected and led the integration platform connecting Microsoft Dynamics 365 F&O ERP, Formpipe Lasernet document generation, Azure Blob Storage, and Certified PDP Partner API via event-driven .NET 8 Azure Functions.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Architecture & Leadership:</strong> Authored Basic Design, HLD, LLD; established core architecture, base repository, coding standards, and led sprint delivery for 8 engineers.</li>
+          <li><strong>Automated Submit Flow:</strong> Designed event-driven pipeline where Lasernet exports invoices (PDF/A-3 and Factur-X XML) to Azure Blob Storage, triggering Event Grid $\rightarrow$ Azure Service Bus queue (`einvoice-blob-events`). Azure Functions (.NET 8 isolated worker) processes in parallel, verifies SHA-256 hash, authenticates via OAuth 2.0 PKCE with refresh token rotation, submits to PDP Partner API, and synchronizes status back to D365 F&O.</li>
+          <li><strong>Lifecycle Webhook Ingestion:</strong> Built high-resilience HTTP Functions receiving status webhooks; implemented constant-time HMAC-SHA256 signature verification; enqueued into Azure Service Bus session queue (`einvoice-lifecycle`) for strict order preservation, deduplication, and DLQ handling.</li>
+          <li><strong>Directory Sync & Fallback Polling:</strong> Created Timer-triggered Functions for automated periodic status reconciliation and directory synchronization between D365 OData and PDP Directory API.</li>
+          <li><strong>Zero-Trust Cloud IaC:</strong> Automated 100% of Azure infrastructure across LAB, DEV, and PROD using Bicep IaC with User-Assigned Managed Identity and Key Vault references, eliminating connection strings. Configured Azure DevOps CI/CD.</li>
+          <li><strong>Resilience & Testing:</strong> Applied Polly policies (exponential backoff, jitter, Retry-After compliance); engineered test suites with xUnit, Moq, Azurite emulator, Service Bus emulator, and MockServer for E2E verification.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: C# (.NET 8), Azure Functions (isolated worker), Azure Service Bus (sessions, DLQ), Azure Blob Storage, Event Grid, Key Vault, Managed Identity, Dynamics 365 F&O, Lasernet, Factur-X, Bicep, Polly, xUnit, Azure DevOps</div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Industrial Operations & Logistics Management Platform</span>
+          <span class="project-duration">July 2026 – Present</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Senior Backend Engineer · 8 Members</span>
+          <span>Industrial Waste Logistics & Digital Manifests</span>
+        </div>
+        <div class="project-desc">
+          Comprehensive order and manifest management platform for industrial waste collection, transport, and disposal, featuring staff/client web portals and a driver mobile app with OCR and digital signatures.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Backend Architecture:</strong> Designed layered Laravel REST API serving Admin, Client, and Driver user groups securely.</li>
+          <li><strong>Security & Authorization:</strong> Implemented custom OAuth2 provider using Laravel Passport and designed granular Role-Based Access Control (RBAC) with 95+ distinct permissions.</li>
+          <li><strong>Containerization:</strong> Orchestrated multi-repo deployment and container environments using Docker Compose and Just task runner.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP 8.3, Laravel 11.36, Passport OAuth2, Nuxt 3, Vue 3, PrimeVue, MySQL, Redis, MinIO, Docker Compose</div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Enterprise Employee Evaluation & Grading Management System</span>
+          <span class="project-duration">July 2026</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Team Lead / Senior Developer · 4 Members</span>
+          <span>Corporate HR Grading & Multi-Level Review</span>
+        </div>
+        <div class="project-desc">
+          High-security employee evaluation platform for a major corporation featuring self-assessment, peer review, multi-tier approval, and spreadsheet conversions.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Technical Leadership:</strong> Combined technical coordination and hands-on coding; established OpenAPI and Bruno contracts between frontend and micro-services.</li>
+          <li><strong>Cloud & DevOps:</strong> Designed AWS infrastructure via Terraform, containerized services with Docker Compose, and configured automated test verification gates.</li>
+          <li><strong>Integration:</strong> Built OAuth2 SSO Identity Provider, inter-service webhooks, and Univer spreadsheet data converter.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP 8.2, Laravel 11, Node.js (Express), TypeScript, Nuxt 3, Vue 3.5, MySQL 8, Redis, S3/MinIO, AWS, Terraform, Docker</div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">AI-Powered Code Review Automation Tool</span>
+          <span class="project-duration">June 2026 – July 2026</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Senior Backend Engineer · 4 Members</span>
+          <span>SDLC Quality Gates & AI Automation</span>
+        </div>
+        <div class="project-desc">
+          Automated code review system triggered by Pull Requests; AI analyzes Git diffs against Jira ticket requirements, posts inline comments, and governs approval workflows.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Microservices Architecture:</strong> Separated Webhook API, AI workers, and web dashboard into decoupled services.</li>
+          <li><strong>AI Pipeline & Queueing:</strong> Built background workers consuming Git diffs and querying AI endpoints; used RabbitMQ to buffer bursts of PR events asynchronously.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: Node.js 20, NestJS, RabbitMQ, PostgreSQL, Docker Compose, Jenkins, Bitbucket Webhooks</div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Digital Health Records & Clinic Management App</span>
+          <span class="project-duration">April 2026 – June 2026</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Senior Backend Engineer · 6 Members</span>
+          <span>Healthcare & Clinic EHR Sync</span>
+        </div>
+        <div class="project-desc">
+          Backend for patient digital health records across a clinic network, integrating tightly with third-party Clinic Management Systems.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>API & Scheduled Sync:</strong> Built REST APIs with Django REST Framework; scheduled background Celery/Redis tasks to sync patient records and lab results safely.</li>
+          <li><strong>Security:</strong> Implemented JWT authentication and encrypted data transmission for sensitive patient medical data.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: Python 3.12, Django 5.2, Django REST Framework, Celery, Redis, PostgreSQL 15, uv, Docker</div>
       </div>
     </div>
-    <div class="row" style="display: flex;flex-wrap: wrap;margin-right: -10px; margin-left: -10px;box-sizing: border-box;">
-      <!-- Main Content -->
-      <div class="col-10" style="display: block; position: relative; width: 100%; padding-right: 10px; padding-left: 10px; flex: 0 0 auto; flex: 0 0 100%; max-width: 100%;box-sizing: border-box;">
-        <!-- PROFESSIONAL EXPERIENCE-->
-        <div class="experience" style="box-sizing: border-box; display: flex; flex-direction: column; background: #f7f7ff; width: 100%; padding:10px 5px;text-align: center; box-shadow: 0 2px 6px 0 #dadafda6, 0 2px 6px 0 #ceceee8a;">
-          <h2 style="padding: 15px 0 5px 0; margin: 0">PROFESSIONAL EXPERIENCE</h2>
-                    <!-- Company Kaopiz -->
-          <div style="display: flex; flex-direction: column; text-align: start">
-            <h3 style="margin: 0; padding: 10px 0">Kaopiz <span style="font-weight: 400;"> - Technical Leader</span></h3>
-            <p style="font-style: italic; margin: 0; padding: 5px 0">April 2026 - Present</p>
-            <h4 style="margin: 10px 0 5px 0;">Internal Technical Training — Instructor</h4>
-            <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-              <li><strong>Advanced SQL — Query Reasoning &amp; Data Architecture:</strong> Taught SQL execution, JOINs, subqueries, CTEs and window functions; examined common query pitfalls in PostgreSQL/MySQL.</li>
-              <li><strong>Advanced SQL — Hands-on Performance Optimization:</strong> Guided developers through EXPLAIN ANALYZE, bottleneck diagnosis, index design and SARGable queries; practiced measuring, diagnosing, optimizing and measuring again.</li>
-              <li><strong>Advanced SQL — Transactions &amp; Reporting:</strong> Covered ACID, isolation levels, MVCC, deadlocks and concurrent access; introduced analytical data modeling, star schemas and materialized views.</li>
-              <li><strong>AI-Driven Software Development (2 classes):</strong> Taught specification and context preparation, rules for directing AI-driven development tasks and output verification; emphasized developer oversight, quality control and data security.</li>
-              <li><strong>AI SDLC Overview:</strong> Introduced AI across the software development life cycle, specification-driven workflows and human-in-the-loop oversight; clarified developer responsibility for reviewing, verifying and using AI-generated output.</li>
-            </ul>
-            <!-- E-invoicing D365 Partner PDP Azure Functions project -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">E-Invoicing Integration Platform: Dynamics 365 F&O × Lasernet × Azure Functions × Certified PDP Platform</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">September 2026 - Present</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">8 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Technical Lead
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    An enterprise B2B e-invoicing integration platform designed for the French e-invoicing reform mandate (Factur-X standard / Certified PDP Platform). The platform orchestrates an event-driven integration connecting Microsoft Dynamics 365 F&O ERP, Formpipe Lasernet document generation, Azure Blob Storage, and the Certified Partner PDP (Plateforme de Dématérialisation Partenaire) via .NET 8 Azure Functions isolated-worker architecture.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Technical Leadership & Architecture:</span> Served as Technical Lead, leading end-to-end system architecture design (Basic Design, HLD, LLD), technology selection, core framework implementation, development standards, and technical coordination across the engineering team.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Invoice Submit Flow:</span> Architected an event-driven ingestion pipeline: as Formpipe Lasernet generates invoice files (PDF/A-3 and Factur-X XML) and manifests into Azure Blob Storage (ready/), Azure Event Grid captures BlobCreated events and routes messages to Azure Service Bus (einvoice-blob-events). .NET 8 Azure Functions (isolated worker) process messages with sessions, read blobs securely via Managed Identity, compute SHA-256 digests, authenticate with Partner PDP API via OAuth 2.0 Authorization Code + PKCE (with single-flight refresh token rotation), transmit documents to the Certified PDP platform, and synchronize submission statuses back to Dynamics 365 F&O.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Lifecycle Webhook Ingestion:</span> Designed and built an HTTP Function endpoint to receive invoice lifecycle status updates from the Partner PDP platform; enforced raw-body HMAC-SHA256 signature verification using constant-time comparison; acknowledged 200 immediately after enqueuing into session-enabled Service Bus queues (einvoice-lifecycle) to guarantee ordered processing, version-based deduplication, and dead-letter queue (DLQ) retry strategies.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Directory Sync & Polling Fallback:</span> Implemented Timer-triggered Functions for scheduled fallback polling against Partner PDP status APIs to guard against lost webhooks, and developed automated synchronization between D365 F&O OData/custom services and Partner PDP Directory APIs for company and business partner registries.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Cloud Infrastructure & Security (IaC):</span> Designed and automated 100% of Azure cloud infrastructure using modular Bicep IaC across LAB, DEV, and PROD environments (Function App Flex Consumption, Service Bus, Key Vault, Blob Storage, Event Grid, Application Insights, Private Endpoints, and VNet integration). Enforced Zero-Trust security with User-Assigned Managed Identity and Key Vault secret references without static connection strings. Established CI/CD pipelines in Azure DevOps.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Resilience & Automated Testing:</span> Applied resilience engineering using Polly (exponential backoff, jitter, and Retry-After handling for 429/5xx responses). Built a comprehensive test suite with xUnit, Moq, Azurite emulator, Service Bus emulator, and MockServer for D365 and Partner PDP APIs, verifying end-to-end integration both locally and on live Azure Cloud environments.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> C# (.NET 8), Azure Functions isolated worker, ASP.NET Core</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Azure Cloud:</span> Azure Functions (Flex Consumption), Azure Blob Storage, Azure Service Bus (sessions, DLQ), Azure Event Grid, Azure Key Vault, User-Assigned Managed Identity, Microsoft Entra ID (SSO), Application Insights, OpenTelemetry</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Integrated Systems:</span> Microsoft Dynamics 365 F&O, Formpipe Lasernet, Certified PDP Partner API, Factur-X (XML/PDF)</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Libraries & Patterns:</span> Polly, Azure.Identity, Azure.Messaging.ServiceBus, Azure.Storage.Blobs, DDD, Event-Driven Architecture, Outbox Pattern</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">IaC & CI/CD:</span> Bicep, Azure DevOps Pipelines</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Testing:</span> xUnit, Moq, ASP.NET Core TestServer, Azurite, Service Bus Emulator, MockServer</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- Industrial operations project -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Industrial Operations & Logistics Management Platform</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">July 2026 - Present</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">8 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Senior Backend Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    A comprehensive order and manifest management system designed for the industrial waste collection, transport, and disposal sector. The platform features tailored web portals for staff and customers, alongside a specialized mobile application for drivers supporting OCR and digital signatures.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Backend Architecture:</span> Engineered a robust Laravel REST API architecture tailored for three distinct audiences (Admin, Customer, Driver), ensuring high performance and security.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Security & Auth:</span> Implemented a custom OAuth2 provider utilizing Laravel Passport and designed a fine-grained Role-Based Access Control (RBAC) system with 95+ permissions.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Integration & Automation:</span> Coordinated deployment pipelines and container orchestration (Docker Compose) across multiple nested frontend and backend repositories.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> PHP 8.3, Laravel 11.36, Passport OAuth2</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Frontend:</span> Nuxt 3, Vue 3, PrimeVue</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Database & Storage:</span> MySQL, Redis, MinIO</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure:</span> Docker Compose, Just task runner</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-<!-- Equipment management project -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Enterprise Employee Evaluation & Grading Management System</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">July 2026</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">4 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Team Lead / Senior Developer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Developed an enterprise employee management and evaluation system, leading the technical team while contributing directly to software development.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Technical Leadership &amp; Development:</span> Served as Team Lead and Senior Developer, combining technical coordination with hands-on coding.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure & DevOps:</span> Designed and managed containerized orchestration using Docker Compose, AWS infrastructure via Terraform, and automated testing gates.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Integration:</span> Developed system integration, authentication and data processing features.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">API Design:</span> Established comprehensive API contracts (OpenAPI, Bruno) to ensure smooth integration between distributed frontends and backend services.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> PHP 8.2, Laravel 11, Node.js (Express), TypeScript</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Frontend:</span> Nuxt 3, Vue 3.5, Tailwind 4, PrimeVue</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Database & Storage:</span> MySQL 8, Redis, S3/MinIO</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure:</span> AWS, Terraform, Docker</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-                        <!--Project AI Review -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">AI-Powered Code Review Automation Tool</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">June 2026 - July 2026</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">4 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Senior Backend Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    An intelligent code review automation system that triggers on Pull Requests. The AI agent analyzes code diffs against project requirements (e.g., Jira tickets), automatically posts inline PR comments, and manages the reviewer approval flow to accelerate the SDLC.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">System Architecture:</span> Architected a microservices-based system separating the Webhook API, AI processing workers, and web dashboard.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">AI Pipeline Integration:</span> Developed specialized backend workers to process Git diffs and integrate with AI reasoning endpoints to detect bugs and logical errors.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Message Queueing:</span> Designed and implemented robust task queueing using RabbitMQ to handle asynchronous processing of high-volume PR events.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Platform Integration:</span> Seamlessly integrated the application with Git platforms (like Bitbucket) using Webhooks and secure token storage mechanisms.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> Node.js 20, NestJS</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Message Broker:</span> RabbitMQ</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Database:</span> PostgreSQL</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure:</span> Docker Compose, Jenkins</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-<!-- Enterprise application project -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Digital Health Records & Clinic Management App</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">April 2026 - June 2026</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">6 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Senior Backend Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    A comprehensive backend service for a digital patient application managing health records across multiple clinics. The system integrates tightly with third-party CMS to sync patient data, book appointments, and retrieve lab reports securely.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">API Development:</span> Designed and developed robust RESTful APIs using Django REST Framework for seamless frontend communication.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Third-Party Integration:</span> Built scheduled tasks with Celery/Redis to poll and synchronize patient data and lab reports with external Clinic Management Systems.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Security & Authentication:</span> Implemented JWT-based authentication and secure password hashing protocols for sensitive patient health data.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Documentation:</span> Automatically generated OpenAPI specifications to ensure consistent API contracts with client apps.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Backend:</span> Python 3.12, Django 5.2, Django REST Framework</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Async Jobs:</span> Celery, Redis</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Database:</span> PostgreSQL 15</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Tools:</span> uv, Docker, JWT Auth</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
 
-                      </div>
-          <hr style="page-break-after: always;"></hr>
-<!-- Company SupremeTech Co., Ltd. -->
-          <div style="display: flex; flex-direction: column; text-align: start">
-            <h3 style="margin: 0; padding: 10px 0">SupremeTech Co., Ltd. <span style="font-weight: 400;"> - Technical Leader</span></h3>
-            <p style="font-style: italic; margin: 0; padding: 5px 0">October 2024 - March 2026</p>
-            <!--Project Automotive EDI -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Global Luxury Automotive Vehicle Inspection, Registration & Recall Data Hub</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">November 2025 - March 2026</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">10 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Technical Architect
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Architected a highly scalable Data Transfer Hub (EDI Server) using PHP/Laravel, strictly adhering to Hexagonal Architecture and Domain-Driven Design (DDD) to replace a legacy on-premise system. The platform covers vehicle completion inspection, electronic registration, recall management, recycling fees, parts logistics and dealer/distributor data exchange.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Architecture Design:</span> Architected a highly scalable Data Transfer Hub (EDI Server) using PHP/Laravel, strictly adhering to Hexagonal Architecture and Domain-Driven Design (DDD).</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Batch Processing:</span> Designed complex, high-throughput Batch Processing & ETL pipelines to process, transform, and synchronize large-scale automotive data between the Data Lake (S3) and Aurora MySQL.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">System Integrations:</span> Orchestrated seamless multi-protocol data integrations (Kafka, HULFT, sFTP, RVS) with external systems, including Japanese government agencies (MLIT, JARC) and global PAG systems.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Cloud Infrastructure:</span> Led the cloud infrastructure design on AWS (ECS, S3, Aurora MySQL, Transit Gateway) prioritizing high availability, centralized egress security, and zero-downtime deployments via CI/CD.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Identity & Access:</span> Integrated Single Sign-On with Microsoft Entra ID (Azure AD) via OAuth 2.0 / OpenID Connect, with multi-factor authentication for users on PC, tablet and smartphone.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Code Quality & Testing:</span> Enforced code quality and maintainability by setting up comprehensive testing strategies (Architecture tests, E2E, Integration, Unit via Pest/PHPUnit) and Infrastructure as Code (Terraform).</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Application & API:</span> PHP, Laravel, Hexagonal Architecture</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Databases:</span> Aurora MySQL</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure & DevOps:</span> Terraform (IaC), AWS (ECS, S3, Transit Gateway, etc.), Docker</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Integrations & Messaging:</span> Kafka, HULFT, sFTP, RVS</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Identity:</span> Microsoft Entra ID (Azure AD) SSO, OAuth 2.0 / OIDC, MFA</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Testing:</span> Pest, PHPUnit</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!--Project Social Travel Network -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Social Travel Network</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Audit & Proposal: 3/2025 - 5/2025, Project Technical Leader: 6/2025 - 3/2026</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">6 members (Audit & Proposal), 16 members (Implementation)</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Project Technical Leader
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Architected the technical evolution of a Social Travel Network, a key digital asset for a major Japanese travel corporation. My role was to scale the existing MVP by optimizing critical performance bottlenecks (e.g., image loading, async processing). I also led the architecture for Phase 3, designing complex new social features including the "Discover" engine, a "Timeline" feed, user segmentation for "Campaigns", and "Sharing Groups".
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Technical Leadership:</span> Led cross-functional leads (BA, Dev, Mobile, QC) to analyze, propose, and architect technical solutions for Phase 3, balancing client budget and team resources.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">System Audit & Optimization:</span> Audited the existing MVP to identify and resolve critical performance bottlenecks, creating the optimization roadmap for Phase 3.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Async Architecture (Backend):</span> Re-architected the AWS Rekognition content moderation flow from a synchronous (blocking) process to an asynchronous, event-driven model using SQS, eliminating upload timeouts.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Caching & DB Optimization:</span> Solved Home screen latency by designing a multi-layer Redis caching strategy (ID lists & objects) and optimizing complex SQL queries/indexes.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Mobile Performance (Flutter):</span> Drove the solution for mobile app crashes by implementing lazy loading and low-quality image previews in the Flutter media library.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Geo-spatial Architecture:</span> Researched and implemented the PostGIS solution to power all geo-spatial features, including location search, distance calculation, and "nearby" queries.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Data Model Refactoring:</span> Re-architected the core data model from a single entity (Photo) to a Polymorphic (Media) design, enabling future support for Video and other media types, and planned the data migration strategy.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Timeline Architecture:</span> Designed the "Discover" feed's core logic, including the scoring algorithm and the Hybrid Fan-out/Pull Model to solve the "Celebrity Problem".</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">New Feature Design:</span> Directly architected new business-critical features, including Memories (Story-like) and user segmentation for Admin Campaigns.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">AI-Driven Strategy:</span> Pioneered an AI-augmented workflow (MAS, Generative AI) during the 'Audit & Proposal' phase to rapidly distill client requirements into a structured, spec-driven development plan, securing the Phase 3 contract.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Application & API:</span> NestJS, TypeScript, Next.js, Prisma</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Data Pipeline:</span> Python, Polars, Pyarrow</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Mobile (Client):</span> Flutter</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Databases & Caching:</span> PostgreSQL, PostGIS, Redis</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure & DevOps:</span> Terraform (IaC), AWS (ECS, Rekognition, Cognito, S3, Lambda, SQS...)</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Integrations:</span>Firebase, Google Analytics, Google Place</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!--Project E-commerce -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">E-commerce & Data Platform</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">October 2024 - September 2025</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">17 members (Implementation phase, Oct '24 - Mar '25), reduced to 4 members (Maintenance phase)</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Project Technical Leader
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Architected the digital ecosystem for a 1000-store Japanese bento chain. Designed a unified platform integrating a mobile e-commerce app (ordering, loyalty) with a central Customer Data Platform (CDP). This architecture processes multi-channel data (In-Store POS, Mobile) to automatically power the core Point/Rank loyalty engine
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Technical Leadership:</span> Led cross-functional DevLeads (PM, BA, BE, FE, Mobile, QC) to define optimal technical solutions, balancing business goals, team effort, and release timelines.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Architecture & Delivery:</span> Owned the end-to-end technical lifecycle, from pioneering initial system architecture to ensuring high-quality delivery and final deployment planning.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">System Design & Optimization:</span> Designed core API and service architecture; responsible for identifying system anomalies and proposing optimization solutions.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">CDP Architecture:</span> Architected the end-to-end Customer Data Platform (CDP) for multi-channel data ingestion (POS, Mobile) via Braze SDKs.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">ETL & DWH:</span> Designed and oversaw the big data pipeline (Python, Polars) for processing (CSV, Parquet, Avro) from an S3 data lake into the AWS Redshift DWH.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Data Modeling:</span> Developed the business logic on Redshift to create Unified Customer Profiles, powering the automated Point/Rank loyalty engine.</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure Architecture:</span> Designed the AWS infrastructure and collaborated with the DevOps team to implement IaC (Terraform), ensuring high availability and cost optimization.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li><span style="font-weight: bold; margin-right: 1px;">Application & API:</span> Laravel 11, RDS MySQL</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Data Pipeline:</span> Python, Polars, Pyarrow</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Mobile (Client):</span> Flutter</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Databases & Caching:</span> Redshift (DWH), PostgreSQL (Jobs/Redash), MySQL (App), Redis (Cache)</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Infrastructure & DevOps:</span> Terraform (IaC), AWS (ECS, ALB, S3, Lambda, SQS...)</li>
-                      <li><span style="font-weight: bold; margin-right: 1px;">Integrations:</span> Braze (S3 Currents, SDK tracking), E-Menu, Firebase</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <hr style="page-break-after: always;"></hr>
-          <!-- Company Interate Corp -->
-          <div style="display: flex; flex-direction: column; text-align: start">
-            <h3 style="margin: 0; padding: 10px 0">Interate Corp <span style="font-weight: 400;"> - Senior Backend Engineer</span></h3>
-            <p style="font-style: italic; margin: 0; padding: 5px 0">March 2023 - October 2024</p>
-            <!--Project Affiliate Networking Platform -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Affiliate Networking Platform</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">March 2023 - October 2024</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">30 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    TeamLead Backend Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Affiliate networking platform, serving as a bridge between Brands and Partners. This platform allows Brands to post offers and find potential partners, while Partners can accept offers and run campaigns on their own traffic sources. The platform supports both sides in tracking campaign performance, utilizing AI analytics technologies to optimize campaigns and contracts
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Designed system architecture and base source code.</li>
-                      <li>Analyzed business requirements to define domains, microservices, and database schema.</li>
-                      <li>Developed and maintained APIs for frontend integration.</li>
-                      <li>Optimize big data query speed on the system's Report and Dashboard pages</li>
-                      <li>Write unit and integration tests for backend.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Python, Typescript, Go</li>
-                      <li>Flask, Django, AWS Chalice, Nuxt.js, Gin-Gonic</li>
-                      <li>Serverless, Microservices, Domain-driven Design, Hexagonal Architecture, Event driven architecture</li>
-                      <li>AWS Services: API Gateway, EC2, ECS, S3, SQS, RDS, OpenSearch, ElastiCache, Redshift, Lambda, Kinesis, WAF & Shield, CloudFront, CodePipeline, CloudWatch, Load Balancer</li>
-                      <li>Firebase Services: Firebase Cloud Messaging</li>
-                      <li>Filter out bots and fraud: Anura</li>
-                      <li>Cloud data warehouses: Databricks, Snowflake, Redshift</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!--Project Retail Maintenance Operations App -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Retail Maintenance Operations App</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">March 2024 - August 2024</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">5 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    TeamLead Backend Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    This application streamlines store maintenance operations by efficiently connecting stores facing issues with the right service providers. The app facilitates centralized management of multiple stores, real-time work progress tracking, and seamless payment processing, ultimately saving valuable time and resources.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Designed system architecture and base source code.</li>
-                      <li>Developed and maintained APIs for frontend integration.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>PHP, Typescript</li>
-                      <li>Laravel, ReactJS</li>
-                      <li>AWS Services: API Gateway, EC2, S3, RDS, CodePipeline, CloudWatch</li>
-                      <li>Firebase Services: Firebase Cloud Messaging</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <hr style="page-break-after: always;"></hr>
-          <!-- Company Nitro Tech Asia INC -->
-          <div style="display: flex; flex-direction: column; text-align: start">
-            <h3 style="margin: 0; padding: 10px 0">Nitro Tech Asia INC <span style="font-weight: 400;"> - Backend Engineer</span></h3>
-            <p style="font-style: italic; margin: 0; padding: 5px 0">August 2021 - March 2023</p>
-            <!--Project Multipurpose Local Tourism & Loyalty App -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Experience Smart Travel & Shopping</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">August 2021 - April 2022</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">14 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Senior Backend Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    This mobile app is a comprehensive solution that integrates various features such as a loyalty point system, QR code payments, multilingual translation, and travel guides. It aims to foster interaction between local businesses and users, while also supporting the development of tourism and the local economy.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>API Development: Received and analyzed client requirements, then designed and developed APIs to meet those needs.</li>
-                      <li>Onboarding and Mentorship: Guided new team members in understanding the project's architectural patterns and processes.</li>
-                      <li>Code Review: Conducted thorough code reviews of pull requests submitted by other team members.</li>
-                      <li>Deployment: Deployed the backend application to EC2 instances in both development and staging environments.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>PHP, JavaScript, Swift, Kotlin</li>
-                      <li>Laravel, Vue.js</li>
-                      <li>Model-View-Controller, Repository Design Pattern</li>
-                      <li>EC2, S3, RDS, WAF & Shield, CloudFront, CloudWatch</li>
-                      <li>Firebase Services: Firebase Cloud Messaging</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- Internal HR Management Solution -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Internal HR Management Solution</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">February 2022 - September 2022</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">10 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Backend Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Streamlines core HR functions, including employee data management, time tracking, leave requests, and company event coordination, enhancing organizational efficiency and employee engagement
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Collaborated with Business Analysts and Technical Leads to gain a deep understanding of business requirements.</li>
-                      <li>Participated in the design of relational database schemas.</li>
-                      <li>Developed base source code and implemented APIs in alignment with business logic.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>PHP, JavaScript, Swift, Kotlin</li>
-                      <li>Laravel, Vue.js</li>
-                      <li>Model-View-Controller, Repository Design Pattern</li>
-                      <li>EC2, S3, RDS, WAF & Shield, CloudFront, CloudWatch</li>
-                      <li>Firebase Services: Firebase Cloud Messaging</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!--Project Woodworking E-commerce -->
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Premium Framing & Woodworking E-commerce Plugin</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">August 2022 - October 2022</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">3 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Team Lead
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    A renowned provider of premium framing and woodworking products entrusted me with developing a WordPress plugin to enhance their customer ordering experience. The plugin enables dynamic pricing and lead time calculations based on custom specifications, streamlining the ordering process and improving customer satisfaction.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Project Lead: Assumed primary responsibility for the project, collaborating closely with the BRSE (Business Requirement Solution Engineer) to thoroughly understand client requirements.</li>
-                      <li>Development and Mentorship: Established the base source code and provided guidance to team members in developing the plugin.</li>
-                      <li>Deployment: Successfully deployed the product to both development and production environments for the client.</li>
-                      <li>Maintenance and Support: Conducted ongoing monitoring and maintenance of the product to ensure optimal performance and client satisfaction.
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>PHP, JavaScript</li>
-                      <li>WordPress, Jquery</li>
-                      <li>EC2, VPS</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <!-- Company VietTechKey Technology Joint Stock Company -->
-          <div style="display: flex; flex-direction: column; text-align: start">
-            <h3 style="margin: 0; padding: 10px 0">VietTechKey Technology Joint Stock Company <span style="font-weight: 400;"> - Project Manager / Programmer</span></h3>
-            <p style="font-style: italic; margin: 0; padding: 5px 0">2016 - 2021</p>
-
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Recruitment System (Laravel) & E-commerce (Wordpress)</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">2019 - 2021</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">3 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Developer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Built e-commerce websites (WordPress) and a recruitment system (Laravel). The recruitment system allowed employers to post vacancies and screen candidates, and job seekers to create/upload CVs and apply for jobs.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Guiding team members in project development.</li>
-                      <li>Directly participated in coding and conducting code reviews for team members.</li>
-                      <li>Acted as System Admin, deploying applications to Development, Staging, and Production environments.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Back End: PHP, WordPress, Laravel, HTML, CSS/SCSS, Javascript</li>
-                      <li>Database: MySQL</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div>
-              <table style="width: 100%">
-                <thead>
-                <tr>
-                  <th colspan="2" style="font-weight: bold; font-size: 18px; border: 1px solid #dededf; background-color: #eceff1; color: #000000; margin: 5px;">Education Portal Ecosystem</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Duration</td>
-                  <td style=" border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">2016 - 2019</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">Team size</td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">3 members</td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Position
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Programmer
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Description
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Developed, maintained, and supported an electronic portal ecosystem (WordPress) for Departments of Education (e.g., Dak Lak, Quang Ngai, Dak Nong). The system included portals for departments and schools, news synchronization, document management.
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Responsibilities
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Handled backend coding (PHP, WordPress).</li>
-                      <li>Deployed the application to Development, Staging, and Production environments.</li>
-                      <li>Served as System Admin, maintaining the systems and training customers on software usage.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    Techniques
-                  </td>
-                  <td style="border: 1px solid #dededf; background-color: #fff; color: #000000; margin: 5px;">
-                    <ul style="margin-inline-start: 17px; padding-inline-start: 0">
-                      <li>Back End: PHP, Wordpress, HTML, CSS/SCSS, Javascript</li>
-                      <li>Database: MySQL</li>
-                      <li>DevOps: Git, Bitbucket</li>
-                    </ul>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-
-          </div>
+    <!-- Company 2: SupremeTech -->
+    <div class="company-block">
+      <div class="company-header">
+        <div>
+          <span class="company-name">SupremeTech Co., Ltd.</span>
+          <span class="company-title-role"> — Technical Leader</span>
         </div>
+        <span class="company-period">October 2024 – March 2026</span>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Global Luxury Automotive Vehicle Inspection, Registration & Recall Data Hub</span>
+          <span class="project-duration">November 2025 – March 2026</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Technical Architect · 10 Members</span>
+          <span>Automotive EDI Transfer Hub · Global OEM</span>
+        </div>
+        <div class="project-desc">
+          Architected a high-scale Cloud EDI Transfer Hub replacing a legacy on-premise system for a luxury automaker, handling vehicle completion inspections, electronic registrations, recalls, and dealer data exchange.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Hexagonal & DDD Design:</strong> Enforced strict Hexagonal Architecture and Domain-Driven Design (DDD) to isolate domain rules from legacy protocol adapters.</li>
+          <li><strong>High-Throughput Batch/ETL:</strong> Designed high-throughput batch processing pipelines synchronizing large-scale automotive data between S3 Data Lake and Aurora MySQL.</li>
+          <li><strong>Multi-Protocol Integrations:</strong> Coordinated data transfers across Kafka, HULFT, sFTP, and RVS with Japanese government agencies (MLIT, JARC) and PAG systems.</li>
+          <li><strong>AWS Cloud & Identity:</strong> Designed resilient AWS infrastructure (ECS, S3, Aurora MySQL, Transit Gateway); integrated Microsoft Entra ID (Azure AD) SSO via OAuth 2.0 / OIDC with enforced MFA.</li>
+          <li><strong>Quality Gates:</strong> Instituted comprehensive testing strategy (Architecture tests, E2E, Integration, Unit via Pest/PHPUnit) and Terraform IaC.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP, Laravel, Hexagonal Architecture, Aurora MySQL, Terraform, AWS (ECS, S3, Transit Gateway), Docker, Kafka, HULFT, sFTP, RVS, Entra ID SSO, Pest, PHPUnit</div>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Social Travel Network</span>
+          <span class="project-duration">March 2025 – March 2026</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Project Technical Leader · 16 Members</span>
+          <span>Large-Scale Social Platform · Major Japanese Travel Conglomerate</span>
+        </div>
+        <div class="project-desc">
+          Architected Phase 3 expansion of a major Japanese travel social network. Led cross-functional leads (BA, Dev, Mobile, QC) across Audit & Proposal (6 members) and Implementation (16 members).
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Async Media Moderation:</strong> Re-architected AWS Rekognition moderation from synchronous blocking to event-driven SQS workers, eliminating upload timeouts.</li>
+          <li><strong>Multi-Tier Caching & DB:</strong> Resolved feed latency by engineering multi-tier Redis caching and indexing complex PostgreSQL queries.</li>
+          <li><strong>Geospatial Architecture:</strong> Implemented PostGIS to power location discovery, distance calculation, and proximity queries.</li>
+          <li><strong>Timeline Engine:</strong> Designed the "Discover" feed using a Hybrid Fan-out/Pull model to solve the "celebrity problem", along with custom ranking algorithms.</li>
+          <li><strong>AI Bidding Workflow:</strong> Pioneered Multi-Agent AI workflows during audit/proposal to distill vague requirements into structured plans, winning the contract.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: NestJS, TypeScript, Next.js, Prisma, Python, Polars, PyArrow, Flutter, PostgreSQL, PostGIS, Redis, Terraform, AWS (ECS, Rekognition, Cognito, S3, Lambda, SQS)</div>
+      </div>
+
+      <!-- Project 8 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">E-Commerce & Data Platform (1,000-Store Bento Chain)</span>
+          <span class="project-duration">October 2024 – September 2025</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Project Technical Leader · 17 Members</span>
+          <span>Unified Omnichannel CDP & Retail App</span>
+        </div>
+        <div class="project-desc">
+          Digital ecosystem for a 1,000-store Japanese bento chain, unifying e-commerce ordering and loyalty with an automated Customer Data Platform (CDP).
+        </div>
+        <ul class="bullet-points">
+          <li><strong>End-to-End CDP Architecture:</strong> Designed CDP to collect omnichannel data (in-store POS, Mobile) via Braze SDK streams.</li>
+          <li><strong>Big Data ETL Pipeline:</strong> Designed high-performance ETL pipeline using Python, Polars, and PyArrow to process CSV/Parquet data from S3 into AWS Redshift DWH.</li>
+          <li><strong>Unified Customer Profiles:</strong> Authored analytical models on Redshift generating unified customer profiles, powering real-time point/tier calculations.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: Laravel 11, RDS MySQL, Python, Polars, PyArrow, Flutter, AWS Redshift DWH, Redis, Terraform, AWS ECS, Braze, Redash</div>
       </div>
     </div>
-  </div>
-</main>
+
+    <!-- Company 3: Interate Corp -->
+    <div class="company-block">
+      <div class="company-header">
+        <div>
+          <span class="company-name">Interate Corp</span>
+          <span class="company-title-role"> — TeamLead Backend Engineer</span>
+        </div>
+        <span class="company-period">March 2023 – October 2024</span>
+      </div>
+
+      <!-- Project 9 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Affiliate Networking Platform</span>
+          <span class="project-duration">March 2023 – October 2024</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">TeamLead Backend Engineer · 30 Members</span>
+          <span>AdTech & Affiliate Performance Network</span>
+        </div>
+        <div class="project-desc">
+          Affiliate platform bridging Brands and Partners to publish offers, run high-volume traffic campaigns, track performance metrics, and optimize conversions with AI analytics.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>System Architecture:</strong> Established base architecture using DDD, Hexagonal patterns, Serverless microservices, and Event-Driven messaging.</li>
+          <li><strong>Big Data Query Optimization:</strong> Optimized analytical queries for high-volume Reports and real-time Dashboards; integrated Anura for fraud/bot filtering.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: Python, TypeScript, Go, Flask, Django, AWS Chalice, Nuxt.js, Gin-Gonic, AWS (API Gateway, EC2, ECS, S3, SQS, RDS, OpenSearch, ElastiCache, Redshift, Lambda, Kinesis), Anura, Databricks, Snowflake</div>
+      </div>
+
+      <!-- Project 10 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Retail Maintenance Operations App</span>
+          <span class="project-duration">March 2024 – August 2024</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">TeamLead Backend Engineer · 5 Members</span>
+          <span>Multi-Store Field Service & Maintenance Dispatch</span>
+        </div>
+        <div class="project-desc">
+          Field service maintenance platform connecting retail stores experiencing equipment issues with certified maintenance contractors.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>Architecture & API:</strong> Designed base architecture, schemas, and REST APIs for multi-store dispatch and real-time progress tracking.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP, TypeScript, Laravel, ReactJS, AWS (API Gateway, EC2, S3, RDS, CodePipeline, CloudWatch), Firebase Cloud Messaging</div>
+      </div>
+    </div>
+
+    <!-- Company 4: Nitro Tech Asia INC -->
+    <div class="company-block">
+      <div class="company-header">
+        <div>
+          <span class="company-name">Nitro Tech Asia INC</span>
+          <span class="company-title-role"> — Senior Backend Engineer</span>
+        </div>
+        <span class="company-period">August 2021 – March 2023</span>
+      </div>
+
+      <!-- Project 11 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Experience Smart Travel & Shopping</span>
+          <span class="project-duration">August 2021 – April 2022</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Senior Backend Engineer · 14 Members</span>
+          <span>Tourism Loyalty & QR Payment Platform</span>
+        </div>
+        <div class="project-desc">
+          All-in-one mobile solution featuring loyalty rewards, QR code payments, multilingual translation, and local tourism guides.
+        </div>
+        <ul class="bullet-points">
+          <li><strong>API Engineering & Mentorship:</strong> Designed backend APIs in Laravel; mentored junior engineers on design patterns; conducted code reviews; handled EC2 deployments.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP, JavaScript, Swift, Kotlin, Laravel, Vue.js, MVC, Repository Pattern, AWS (EC2, S3, RDS, WAF, CloudFront), Firebase</div>
+      </div>
+
+      <!-- Project 12 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Internal HR Management Solution</span>
+          <span class="project-duration">February 2022 – September 2022</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Backend Engineer · 10 Members</span>
+          <span>Corporate HR & Attendance System</span>
+        </div>
+        <div class="project-desc">
+          Internal HR system managing employee records, attendance tracking, leave requests, and company event coordination.
+        </div>
+        <ul class="bullet-points">
+          <li>Participated in relational database schema design; implemented core business logic APIs in Laravel.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP, Laravel, Vue.js, MySQL, AWS EC2/RDS, Firebase</div>
+      </div>
+
+      <!-- Project 13 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Premium Framing & Woodworking E-Commerce Plugin</span>
+          <span class="project-duration">August 2022 – October 2022</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Project Lead · 3 Members</span>
+          <span>Custom Woodworking Dynamic Pricing Engine</span>
+        </div>
+        <div class="project-desc">
+          WordPress plugin enabling dynamic pricing and delivery lead-time calculation based on custom framing specifications.
+        </div>
+        <ul class="bullet-points">
+          <li>Led project delivery working directly with BrSE; developed base source code; handled production deployment and maintenance.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP, JavaScript, WordPress, jQuery, AWS EC2, VPS</div>
+      </div>
+    </div>
+
+    <!-- Company 5: VietTechKey -->
+    <div class="company-block">
+      <div class="company-header">
+        <div>
+          <span class="company-name">VietTechKey Technology Joint Stock Company</span>
+          <span class="company-title-role"> — Project Manager / Programmer</span>
+        </div>
+        <span class="company-period">2016 – 2021</span>
+      </div>
+
+      <!-- Project 14 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Recruitment System & E-Commerce Web Platforms</span>
+          <span class="project-duration">2019 – 2021</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Developer / Team Lead · 3 Members</span>
+          <span>Job Board & Online Retail Portals</span>
+        </div>
+        <div class="project-desc">
+          Recruitment portal allowing employers to post openings and screen candidates, alongside custom e-commerce platforms.
+        </div>
+        <ul class="bullet-points">
+          <li>Guided team members; performed backend coding and code reviews; managed server deployment across Dev/Staging/Production.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP, Laravel, WordPress, MySQL, HTML, CSS/SCSS, JavaScript</div>
+      </div>
+
+      <!-- Project 15 -->
+      <div class="project-entry">
+        <div class="project-top-row">
+          <span class="project-name">Provincial Education Portal Ecosystem</span>
+          <span class="project-duration">2016 – 2019</span>
+        </div>
+        <div class="project-sub-row">
+          <span class="project-role-badge">Programmer / System Admin · 3 Members</span>
+          <span>Government & Educational Portals</span>
+        </div>
+        <div class="project-desc">
+          Electronic portal ecosystem for provincial Departments of Education (Dak Lak, Quang Ngai, Dak Nong) featuring multi-level news synchronization and document archives.
+        </div>
+        <ul class="bullet-points">
+          <li>Developed backend modules; deployed and maintained multi-tenant servers; trained institutional users.</li>
+        </ul>
+        <div class="tech-pill-row">Stack: PHP, WordPress, MySQL, Linux, Git, Bitbucket</div>
+      </div>
+    </div>
+
+    <!-- 04 / Mentorship & Training -->
+    <h2 class="section-heading">04 / Technical Mentorship & Thought Leadership</h2>
+    <div class="teaching-grid">
+      <div class="teaching-card">
+        <strong>SQL Advanced — Query Execution & Architecture</strong>
+        <p>Trained engineers on internal query engine execution, JOIN algorithms, Subqueries, CTEs, Window Functions, and common schema traps in PostgreSQL/MySQL.</p>
+      </div>
+      <div class="teaching-card">
+        <strong>SQL Advanced — Production Performance Tuning</strong>
+        <p>Instructed on reading EXPLAIN ANALYZE, identifying bottlenecks, designing covering indexes, writing SARGable queries, and systematic measure-optimize-benchmark cycles.</p>
+      </div>
+      <div class="teaching-card">
+        <strong>SQL Advanced — Concurrency & Reporting</strong>
+        <p>Covered ACID guarantees, transaction isolation levels, MVCC concurrency, deadlock handling, star schemas, and materialized view refresh strategies.</p>
+      </div>
+      <div class="teaching-card">
+        <strong>AI-Driven Software Development (2 Cohorts)</strong>
+        <p>Instructed on grounding AI agents with specification and context, establishing boundary rules for AI-led development, and Human-in-the-Loop quality verification.</p>
+      </div>
+      <div class="teaching-card" style="grid-column: span 2;">
+        <strong>AI SDLC Architecture & Developer Governance</strong>
+        <p>Led workshops on integrating AI across the full SDLC; delineated developer responsibility in review, zero-trust verification, and protecting intellectual property.</p>
+      </div>
+    </div>
+
+    <!-- 05 / Education -->
+    <h2 class="section-heading">05 / Education</h2>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px;">
+      <div>
+        <strong style="font-size: 14px; color: var(--text-main);">Da Nang University of Science and Technology (DUT)</strong>
+        <div style="font-size: 12.5px; color: var(--text-muted);">Bachelor of Science in Information Technology</div>
+      </div>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-subtle);">Da Nang, Vietnam</span>
+    </div>
+  </main>
 </body>
 </html>
